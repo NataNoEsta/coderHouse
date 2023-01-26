@@ -1,0 +1,9 @@
+* {
+    background-color: antiquewhite;
+    color:brown
+}
+
+article .text {
+    margin: auto;
+    padding:35%;
+}
