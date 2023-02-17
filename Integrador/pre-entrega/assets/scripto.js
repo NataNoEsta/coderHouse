@@ -1,24 +1,27 @@
 // menu de cafe
-
 const cafecitos = [
-    { name: "Espresso", type: "Negro", precio: 250 },
-    { name: "Espreso Doble", type: "Negro", precio: 350 },
-    { name: "Machiatto", type: "Con leche", precio: 350 },
-    { name: "Capuccino", type: "Con leche", precio: 400 },
-    { name: "Cafe Latte", type: "Frio, con leche", precio: 470}
+    { name: "Espresso", precio: 250 },
+    { name: "Espreso Doble", precio: 350 },
+    { name: "Machiatto", precio: 350 },
+    { name: "Capuccino", precio: 400 },
+    { name: "Cafe Latte", precio: 470},
+    { name: "Americano", precio: 270 },
+    { name: "Mokaccino", precio: 420 }
 ];
-
-var pedido = [];
+alert('Bienvenido/a al café "¿Cafecitoo?"\n[1]Ver menú\n[2]Ordenar\n[0]Salir');
+let pedido = [];
 
 function verMenu() {
     const menuCompleto = cafecitos.map(cafe => cafe.name + " - $" + cafe.precio +'\n')
     alert(menuCompleto.join(''));
     console.log(menuCompleto.join(''));
 }
-alert('Bienvenido/a al café "¿Cafecitoo?"\n[1]Ver menú\n[2]Ordenar\n[0]Salir');
-// verMenu()
-
-var elegir = prompt("Escriba su orden o ESC para salir.")
+function verPedido() {
+    const ordenPedido = pedido.map(cafe => cafe.name + " - $" + cafe.precio + "\n");
+    alert("Su pedido:\n"+ ordenPedido.join(''));
+    console.log("Su pedido:\n" + ordenPedido.join(''));
+};
+var elegir = prompt("Escriba su orden o [0] para salir.")
 
 while (elegir != "0"){
     switch (elegir){
@@ -28,20 +31,16 @@ while (elegir != "0"){
         case "2":
             var orden = prompt("Qué variedad de café desea? ")
             var resultado = cafecitos.find((el) => (el.name).toLowerCase() == orden);
-            resultado ? pedido.push(orden) : alert("No tenemos eso");
+            resultado ? pedido.push(resultado) : alert("No tenemos eso");
         case "0":
-            console.log("Graias, vuelva pronto!");
+            console.log("Gracias, vuelva pronto!");
             break
         default:
-            console.log("Graias, vuelva pronto!");
+            verPedido();
+            alert()
             break;
     }
-    elegir = prompt("Escriba su orden o ESC para salir.");
-    
+    elegir = prompt("Escriba su orden o [0] para salir.");  
 } 
 
-// let resultado = cafecitos.find((el) => (el.name).toLowerCase() == orden);
-// resultado ? pedido.push(orden) : console.log("No sé qué es eso");
-// pedido.push(orden);
-console.log(resultado);
-console.log("su pedido:" + pedido);
+verPedido();
