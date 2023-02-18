@@ -23,7 +23,7 @@ function verPedido() {
 };
 function sumarOrden(){
     let acc = 0;
-    const precios = pedido.map(el => acc += el.precio)
+    const precios = pedido.map(el => acc + el.precio)
     for (let i in precios) {
         acc += precios[i];
     }
