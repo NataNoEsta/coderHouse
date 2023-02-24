@@ -29,6 +29,7 @@ function verMenu() {
                             <figure><img src=${caf.img}></figure>
                             <p class="desc">${caf.descripcion}</p>
                             <p class="precio">Precio: $${caf.precio}</p>
+                            <button class="btn-add">Agregar</button>
                             </article>
                             `
           
