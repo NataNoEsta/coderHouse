@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,600;0,700;1,100;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Italiana&family=Rozha+One&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}
+body {
+    background-color: bisque;
+}
+h1 {
+    text-align: center;
+    font-size: 2rem;
+}
+.main, .orden {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width:700px;
+    margin:20px auto;
+}
+.navbar {
+    display: flex;
+    background-color: whitesmoke;
+    
+}
+.navbar ul {
+    width:100%;
+    text-decoration: none;
+    list-style-type: none;
+    display: inline-flex;
+    justify-content:space-evenly;  
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+}
+.navbar li {
+    border-bottom: 1px solid rgba(158, 73, 73, 0.5);
+}
+.navbar li a {
+    padding-left:5px;
+    padding-right: 5px;
+    text-decoration:none;
+    color: rgb(31, 30, 30);
+}
+.orden {
+    justify-content: center;
+}
+.menu {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+    gap:10px;
+    max-width: 100%;
+}
+.item-menu {
+    justify-content: center;
+    border: 1px solid black;
+    padding: 0 10px;
+    border-radius: 10px ;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 200px;
+    height: auto;
+}
+.item-menu p {
+    font-weight: 400;
+    text-align: center;
+}
+.item-menu .precio {
+    width: 100%;
+    text-align: center;
+    background-color:burlywood;
+}
+.caf-title, h3 {
+    font-family: 'Italiana', serif;
+    line-height: 1;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 1.1rem;
+    width: 100%;
+}
+.caf-title::after{
+    content:"";
+    width:90%;
+    height:2px;
+    background-color: rgb(131, 103, 71);
+    position: relative;
+    display: block;
+    margin:10px auto;
+}
+figure img{
+    display: block;
+    position:relative;
+    width: 150px;
+    height: auto;
+}
+.desc {
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+input[type="submit"] {
+    appearance: none;
+    border: 1px solid brown;
+    border-radius: 25px;
+    padding:2px 15px 2px 15px;
+    background-color: lightpink;
+    color: brown;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 2;
+}
+
+input[type="text"]{
+    padding: 5px 2px;
+    font-size: 14px; 
+    appearance: none;
+    border: 1px solid black;
+    border-radius: 25px;
+    background-color: transparent;
+}

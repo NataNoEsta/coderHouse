@@ -38,7 +38,7 @@ while (elegir !== "0"){
             break;
         case "2":
             var orden = prompt("Qué variedad de café desea? ");
-            var resultado = cafecitos.find((el) => (el.name).toLowerCase() == orden);
+            var resultado = cafecitos.find((el) => (el.name).toLowerCase() == orden.toLowerCase());
             resultado ? pedido.push(resultado) : alert("No tenemos eso");
             break
         case "0":
