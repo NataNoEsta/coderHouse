@@ -15,8 +15,7 @@ lista = JSON.parse(localStorage.getItem("cafecitos"));
 
 let carrito = [];
 
-const carritoBtn = document.getElementById("ver-carrito");
-carritoBtn.addEventListener('click', verCarrito);
+// const carritoBtn = document.getElementById("ver-carrito");
 
 const menuBtn = document.getElementById("ver-menu");
 menuBtn.addEventListener('click', verMenu);
@@ -33,19 +32,21 @@ function verMenu() {
                             <p class="precio">Precio: $${caf.precio}</p>
                             <button class="btn-add">Agregar</button>
                             </article>
-                            `
-          
+                            ` 
 });
 }
 verMenu()
 
 const btnAdd = document.querySelectorAll('.btn-add');
 btnAdd.forEach((btn) => btn.addEventListener('click', agregarCarrito));
+const ordenPedido = document.getElementById('supedido');
 
 function agregarCarrito(el) {
     let pedido = el.target.parentElement
     carrito.push(pedido)
     console.log(pedido)
+    console.log(carrito)
+    ordenPedido.appendChild(pedido)
 }
 
 // const formularioOrden = document.getElementById("formulario-de-orden");
@@ -58,13 +59,14 @@ function agregarCarrito(el) {
 // })
 
 function verCarrito() {
-    const supedido = document.getElementById("supedido")
-    const carritoOrden = carrito.map((carr) => {
-        supedido.innerHTML = `<article class="item-menu" id="item-menu">
-                            <h3 class="caf-title">${carr.name}</h3>
-                            <figure><img src=${carr.img}></figure>
-                            <p class="desc">${carr.descripcion}</p>
-                            <p class="precio">Precio: $${carr.precio}</p>  
-                            </article>`
-    });   
+    // const supedido = document.getElementById("supedido")
+    // const carritoOrden = carrito.map((carr) => {
+    //     supedido.innerHTML = `<article class="item-menu" id="item-menu">
+    //                         <h3 class="caf-title">${carr.name}</h3>
+    //                         <figure><img src=${carr.img}></figure>
+    //                         <p class="desc">${carr.descripcion}</p>
+    //                         <p class="precio">Precio: $${carr.precio}</p>  
+    //                         </article>`
+    // });   
+
 }
