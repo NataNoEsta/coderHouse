@@ -15,8 +15,8 @@ lista = JSON.parse(localStorage.getItem("cafecitos"));
 
 let carrito = [];
 
-// const carritoBtn = document.getElementById("ver-carrito");
-// carritoBtn.addEventListener('click', verCarrito);
+const carritoBtn = document.getElementById("ver-carrito");
+carritoBtn.addEventListener('click', verCarrito);
 
 const menuBtn = document.getElementById("ver-menu");
 menuBtn.addEventListener('click', verMenu);
@@ -44,7 +44,7 @@ btnAdd.forEach((btn) => btn.addEventListener('click', agregarCarrito));
 
 function agregarCarrito(el) {
     let pedido = el.target.parentElement
-    
+    carrito.push(pedido)
     console.log(pedido)
 }
 
