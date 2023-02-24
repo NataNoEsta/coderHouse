@@ -11,39 +11,51 @@ const cafecitos = [
     { name: "Mocachino", precio: 420, descripcion: "Capuchino con salsa de chocolate", img: "/assets/images/caffe_mochaccino.png" }
 ];
 localStorage.setItem("cafecitos", JSON.stringify(cafecitos));
+lista = JSON.parse(localStorage.getItem("cafecitos"));
 
 let carrito = [];
+
 const carritoBtn = document.getElementById("ver-carrito");
 carritoBtn.addEventListener('click', verCarrito);
 
 const menuBtn = document.getElementById("ver-menu");
 menuBtn.addEventListener('click', verMenu);
 
-const pedidoBtn = document.getElementById("enviar");
+// const pedidoBtn = document.getElementById("enviar");
 
 function verMenu() {
     const menu = document.getElementById("menu")
-    const menucafe = cafecitos.map((caf) => {
+    const menucafe = lista.map((caf) => {
         menu.innerHTML += `<article class=item-menu id="item-menu">
                             <h3 class="caf-title">${caf.name}</h3>
                             <figure><img src=${caf.img}></figure>
                             <p class="desc">${caf.descripcion}</p>
                             <p class="precio">Precio: $${caf.precio}</p>
+                            <button class="btn-add">Agregar</button>
                             </article>
                             `
           
 });
 }
+verMenu()
 
+const btnAdd = document.querySelectorAll('.btn-add');
+btnAdd.forEach((btn) => btn.addEventListener('click', agregarCarrito));
 
-const formularioOrden = document.getElementById("formulario-de-orden");
-formularioOrden.addEventListener('submit', (ee) => {
-    console.log(ee.target[0].value)
-    let pedido = ee.target[0].value;
-        const buscado = cafecitos.find((item) => item.name.toLowerCase() == pedido.toLowerCase());
-        carrito.push(buscado);
+function agregarCarrito(el) {
+    let pedido = el.target.parentElement
+    carrito.push(pedido)
+    console.log(pedido)
+}
 
-})
+// const formularioOrden = document.getElementById("formulario-de-orden");
+// formularioOrden.addEventListener('submit', (ee) => {
+//     console.log(ee.target[0].value)
+//     let pedido = ee.target[0].value;
+//         const buscado = cafecitos.find((item) => item.name.toLowerCase() == pedido.toLowerCase());
+//         carrito.push(buscado);
+
+// })
 
 function verCarrito() {
     const supedido = document.getElementById("supedido")
@@ -54,6 +66,5 @@ function verCarrito() {
                             <p class="desc">${carr.descripcion}</p>
                             <p class="precio">Precio: $${carr.precio}</p>  
                             </article>`
-    });
-    
+    });   
 }
