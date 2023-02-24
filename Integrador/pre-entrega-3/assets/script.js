@@ -42,11 +42,10 @@ verMenu()
 const btnAdd = document.querySelectorAll('.btn-add');
 btnAdd.forEach((btn) => btn.addEventListener('click', agregarCarrito));
 
-function agregarCarrito() {
-    for(i = 0; i< lista.lenght; i++) {
-        carrito.push(lista[i])
-    }
-    console.log(carrito)
+function agregarCarrito(el) {
+    let pedido = el.target.parentElement
+    
+    console.log(pedido)
 }
 
 // const formularioOrden = document.getElementById("formulario-de-orden");
