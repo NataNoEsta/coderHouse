@@ -11,6 +11,7 @@ const cafecitos = [
     { name: "Mocachino", precio: 420, descripcion: "Capuchino con salsa de chocolate", img: "/assets/images/caffe_mochaccino.png" }
 ];
 localStorage.setItem("cafecitos", JSON.stringify(cafecitos));
+lista = JSON.parse(localStorage.getItem("cafecitos"));
 
 let carrito = [];
 
@@ -24,7 +25,7 @@ menuBtn.addEventListener('click', verMenu);
 
 function verMenu() {
     const menu = document.getElementById("menu")
-    const menucafe = cafecitos.map((caf) => {
+    const menucafe = lista.map((caf) => {
         menu.innerHTML += `<article class=item-menu id="item-menu">
                             <h3 class="caf-title">${caf.name}</h3>
                             <figure><img src=${caf.img}></figure>
@@ -36,13 +37,16 @@ function verMenu() {
           
 });
 }
+verMenu()
 
-const btnAdd = document.querySelectorAll(".btn-add")
-for(let i = 0; i< btnAdd.length ; i++){
-    btnAdd.addEventListener('click', (ev) => {
+const btnAdd = document.querySelectorAll('.btn-add');
+btnAdd.forEach((btn) => btn.addEventListener('click', agregarCarrito));
 
-    })
-
+function agregarCarrito() {
+    for(i = 0; i< lista.lenght; i++) {
+        carrito.push(lista[i])
+    }
+    console.log(carrito)
 }
 
 // const formularioOrden = document.getElementById("formulario-de-orden");
@@ -54,14 +58,14 @@ for(let i = 0; i< btnAdd.length ; i++){
 
 // })
 
-// function verCarrito() {
-//     const supedido = document.getElementById("supedido")
-//     const carritoOrden = carrito.map((carr) => {
-//         supedido.innerHTML = `<article class="item-menu" id="item-menu">
-//                             <h3 class="caf-title">${carr.name}</h3>
-//                             <figure><img src=${carr.img}></figure>
-//                             <p class="desc">${carr.descripcion}</p>
-//                             <p class="precio">Precio: $${carr.precio}</p>  
-//                             </article>`
-//     });   
-//}
+function verCarrito() {
+    const supedido = document.getElementById("supedido")
+    const carritoOrden = carrito.map((carr) => {
+        supedido.innerHTML = `<article class="item-menu" id="item-menu">
+                            <h3 class="caf-title">${carr.name}</h3>
+                            <figure><img src=${carr.img}></figure>
+                            <p class="desc">${carr.descripcion}</p>
+                            <p class="precio">Precio: $${carr.precio}</p>  
+                            </article>`
+    });   
+}

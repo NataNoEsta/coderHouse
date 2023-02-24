@@ -103,6 +103,7 @@ figure img{
     margin-bottom: 0;
 }
 input[type="submit"] , .btn-add{
+    margin-bottom: 2%;
     appearance: none;
     border: 1px solid brown;
     border-radius: 25px;
