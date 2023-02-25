@@ -33,10 +33,9 @@ h1 {
     letter-spacing: 2px;
     font-size: 1.2rem;
 }
-.navbar li {
-    border-bottom: 1px solid rgba(158, 73, 73, 0.5);
-}
+.navbar li,
 .navbar li a {
+    border-bottom: 1px solid rgba(158, 73, 73, 0.5); 
     padding-left:5px;
     padding-right: 5px;
     text-decoration:none;
@@ -122,4 +121,7 @@ input[type="text"]{
     border: 1px solid black;
     border-radius: 25px;
     background-color: transparent;
+}
+#ver-menu, #ver-carrito {
+    cursor: pointer;
 }
