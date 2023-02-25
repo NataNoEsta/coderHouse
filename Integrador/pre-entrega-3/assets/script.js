@@ -36,16 +36,6 @@ function verMenu() {
     document.getElementById("app").innerHTML = `
     ${lista.map(itemMenu).join('')}
     `
-    //     const menucafe = lista.map((caf) => {
-    //         menu.innerHTML += `<article class=item-menu id="item-menu">
-    //                             <h3 class="caf-title">${caf.name}</h3>
-    //                             <figure><img src=${caf.img}></figure>
-    //                             <p class="desc">${caf.descripcion}</p>
-    //                             <p class="precio">Precio: $${caf.precio}</p>
-    //                             <button class="btn-add" type="submit">Agregar</button>
-    //                             </article>
-    //                             ` 
-    // });
 }
 verMenu()
 
