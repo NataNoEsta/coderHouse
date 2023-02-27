@@ -1,4 +1,6 @@
 // menu de cafe
+
+
 const cafecitos = [
     { name: "Espresso", precio: 250, descripcion: "Café negro", img: "/assets/images/espresso.png" },
     { name: "Espresso Doble", precio: 285, descripcion: "Café negro, doble", img: "/assets/images/espresso.png" },
@@ -14,9 +16,9 @@ localStorage.setItem("cafecitos", JSON.stringify(cafecitos));
 lista = JSON.parse(localStorage.getItem("cafecitos"));
 
 let carrito = [];
+
 const carritoBtn = document.getElementById("ver-carrito");
 carritoBtn.addEventListener('click', verCarrito)
-
 
 const menuBtn = document.getElementById("ver-menu");
 menuBtn.addEventListener('click', verMenu);
@@ -24,18 +26,16 @@ menuBtn.addEventListener('click', verMenu);
 function itemMenu(caf) {
     return `<article class="item-menu">
             <h3 class="caf-title">${caf.name}</h3>
-            <figure><img src=${caf.img}></figure>
+            <figure><img src=${caf.img} alt="ilust"></figure>
             <p class="desc">${caf.descripcion}</p>
             <p class="precio">Precio: $${caf.precio}</p>
-            <button class="btn-add" type="submit" id="btna">Agregar</button>
+            <button class="btn-add" type="submit">Agregar</button>
             </article>
             `
 }
 
 function verMenu() {
-    document.getElementById("app").innerHTML = `
-    ${lista.map(itemMenu).join('')}
-    `
+    document.getElementById("app").innerHTML = `${lista.map(itemMenu).join('')}`
 }
 verMenu()
 
@@ -44,23 +44,21 @@ btnAdd.forEach((btn) => btn.addEventListener('click', agregarCarrito));
 
 function agregarCarrito(caf) {
     let pedido = caf.target.parentElement;
-    console.log(pedido);
-    carrito.push(pedido);
+    console.log(pedido)
+    carrito.push({...lista[caf]});
     console.log(carrito);
     return carrito;
-    // let parento = pedido.childNodes;
-
 }
 
+function crearCarrito(carr) {
+    return `<article class="item-menu">
+            <h3 class="caf-title">${carr.name}</h3>
+            <figure><img src=${carr.img} alt="ilust"></figure>
+            <p class="desc">${carr.descripcion}</p>
+            <p class="precio">Precio: $${carr.precio}</p>
+            </article>
+            `
+}
 function verCarrito() {
-    const app = document.getElementById("app")
-    const carritoOrden = carrito.map((carr) => {
-        app.innerHTML = `<article class="item-menu" id="item-menu">
-                            <h3 class="caf-title">${carr.name}</h3>
-                            <figure><img src=${carr.img}></figure>
-                            <p class="desc">${carr.descripcion}</p>
-                            <p class="precio">Precio: $${carr.precio}</p>  
-                            </article>`
-    });
-
+    document.getElementById("app").innerHTML = `${carrito.map(crearCarrito).join('')}`
 }
