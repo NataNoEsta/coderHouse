@@ -1,18 +1,19 @@
 // menu de cafe
 const cafecitos = [
-    { name: "Espresso", precio: 250, descripcion: "Café negro", img: "/assets/images/espresso.png" },
-    { name: "Espresso Doble", precio: 285, descripcion: "Café negro, doble", img: "/assets/images/espresso.png" },
-    { name: "Mediano", precio: 290, descripcion: "Café negro, 120ml", img: "/assets/images/mediano.png" },
-    { name: "Machiatto", precio: 350, descripcion: "Café espresso con leche", img: "/assets/images/caffe_mochaccino.png" },
-    { name: "Capuchino", precio: 400, descripcion: "Café con leche espumosa y canela", img: "/assets/images/cappuccino.png" },
-    { name: "Cafe Latte", precio: 470, descripcion: "Café mediano con leche", img: "/assets/images/caffe_latte.png" },
-    { name: "Iced Latte", precio: 470, descripcion: "Café mediano con leche y hielo", img: "/assets/images/caffe_latte.png" },
-    { name: "Americano", precio: 270, descripcion: "Café mediano suave", img: "/assets/images/iced_coffee.png" },
-    { name: "Mocachino", precio: 420, descripcion: "Capuchino con salsa de chocolate", img: "/assets/images/caffe_mochaccino.png" }
+    { name: "Espresso", precio: 250, descripcion: "Café negro", img: "assets/images/espresso.png" },
+    { name: "Espresso Doble", precio: 285, descripcion: "Café negro, doble", img: "assets/images/espresso.png" },
+    { name: "Mediano", precio: 290, descripcion: "Café negro, 120ml", img: "assets/images/mediano.png" },
+    { name: "Machiatto", precio: 350, descripcion: "Café espresso con leche", img: "assets/images/caffe_mochaccino.png" },
+    { name: "Capuchino", precio: 400, descripcion: "Café con leche espumosa y canela", img: "assets/images/cappuccino.png" },
+    { name: "Cafe Latte", precio: 470, descripcion: "Café mediano con leche", img: "assets/images/caffe_latte.png" },
+    { name: "Iced Latte", precio: 470, descripcion: "Café mediano con leche y hielo", img: "assets/images/caffe_latte.png" },
+    { name: "Americano", precio: 270, descripcion: "Café mediano suave", img: "assets/images/iced_coffee.png" },
+    { name: "Mocachino", precio: 420, descripcion: "Capuchino con salsa de chocolate", img: "assets/images/caffe_mochaccino.png" }
 ];
-let carrito = []
+let carrito = [];
+localStorage.setItem("cafemenu", JSON.stringify(cafecitos))
 localStorage.setItem("carrito", JSON.stringify(carrito));
-let carritoStorage = JSON.parse(localStorage.getItem("carrito")) || [];
+let cart = JSON.parse(localStorage.getItem("carrito"));
 
 i=0;
 cafecitos.forEach((el) => el.id = i++)
@@ -31,9 +32,9 @@ function itemMenu(cafecitos) {
       for (let caf of cafecitos) {
         let div = document.createElement('div');
         div.innerHTML =`
-                    <article class="item-menu" id="">
+                    <article class="item-menu">
                     <h3 class="caf-title">${caf.name}</h3>
-                    <figure><img src=${caf.img} alt="ilust" id=""></figure>
+                    <figure><img src=${caf.img} alt="ilust"></figure>
                     <p class="desc">${caf.descripcion}</p>
                     <p class="precio">Precio: $${caf.precio}</p>
                     <button class="btn-add" id="agregar${caf.name}${caf.id}" type="submit">Agregar</button>
@@ -43,31 +44,23 @@ function itemMenu(cafecitos) {
         let btnAdd = document.getElementById(`agregar${caf.name}${caf.id}`);
         btnAdd.addEventListener('click', () => carrito.push(caf));
     }
-    console.log(carrito)    
+
 };
 
 
 
 function verCarrito(carrito) {  
+
     let orden = document.getElementById('carrito');
-    
+
     for(let el of carrito){
         let div = document.createElement('div');
-        div.innerHTML = `<article class="item-menu" id="">
+        div.innerHTML = `<article class="item-menu">
                     <h3 class="caf-title">${el.name}</h3>
-                    <figure><img src=${el.img} alt="ilust" id=""></figure>
+                    <figure><img src=${el.img} alt="ilust"></figure>
                     <p class="desc">${el.descripcion}</p>
                     <p class="precio">Precio: $${el.precio}</p>
                     `;
-        orden.appendChild(div);
+        orden.append(div);
     }
-
-    console.log(orden)
-
 };
-
-
-
-if(carritoStorage.length > 0){
-    verCarrito();
-}
