@@ -12,8 +12,8 @@ const cafecitos = [
 ];
 
 let carrito = [];
-localStorage.setItem("cafemenu", JSON.stringify(cafecitos))
-localStorage.setItem("carrito", JSON.stringify(carrito));
+localStorage.setItem("cafecitos", JSON.stringify(cafecitos))
+// localStorage.setItem("carrito", JSON.stringify(carrito));
 
 // genera un id para cada objeto en el array
 i=0;
@@ -43,15 +43,16 @@ function itemMenu(cafecitos) {
         app.appendChild(div);
         let btnAdd = document.getElementById(`agregar${caf.name}${caf.id}`);
         btnAdd.addEventListener('click', () => {
+            let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
             carrito.push(caf)
-            localStorage.setItem("carrito", JSON.stringify(carrito));
+            
+           localStorage.setItem("carrito", JSON.stringify(carrito)); 
         });
        
     }
-    
+    return carrito;
 };
 
-carrito = JSON.parse(localStorage.getItem("carrito"));
 
 function verCarrito(carrito) {  
     let orden = document.getElementById('carrito');
