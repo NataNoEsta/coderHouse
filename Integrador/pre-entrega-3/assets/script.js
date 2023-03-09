@@ -10,14 +10,14 @@ const cafecitos = [
     { name: "Americano", precio: 270, descripcion: "Café mediano suave", img: "assets/images/iced_coffee.png" },
     { name: "Mocachino", precio: 420, descripcion: "Capuchino con salsa de chocolate", img: "assets/images/caffe_mochaccino.png" }
 ];
+
 let carrito = [];
 localStorage.setItem("cafemenu", JSON.stringify(cafecitos))
 localStorage.setItem("carrito", JSON.stringify(carrito));
-let cart = JSON.parse(localStorage.getItem("carrito"));
 
+// genera un id para cada objeto en el array
 i=0;
 cafecitos.forEach((el) => el.id = i++)
-
 
 
 const carritoBtn = document.getElementById("ver-carrito");
@@ -42,17 +42,20 @@ function itemMenu(cafecitos) {
         
         app.appendChild(div);
         let btnAdd = document.getElementById(`agregar${caf.name}${caf.id}`);
-        btnAdd.addEventListener('click', () => carrito.push(caf));
+        btnAdd.addEventListener('click', () => {
+            carrito.push(caf)
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+        });
+       
     }
-
+    
 };
 
-
+carrito = JSON.parse(localStorage.getItem("carrito"));
 
 function verCarrito(carrito) {  
-
     let orden = document.getElementById('carrito');
-
+    
     for(let el of carrito){
         let div = document.createElement('div');
         div.innerHTML = `<article class="item-menu">
@@ -61,6 +64,6 @@ function verCarrito(carrito) {
                     <p class="desc">${el.descripcion}</p>
                     <p class="precio">Precio: $${el.precio}</p>
                     `;
-        orden.append(div);
+        orden.appendChild(div);
     }
 };
