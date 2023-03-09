@@ -12,7 +12,7 @@ const cafecitos = [
 ];
 let carrito = []
 localStorage.setItem("carrito", JSON.stringify(carrito));
-
+let carritoStorage = JSON.parse(localStorage.getItem("carrito")) || [];
 
 i=0;
 cafecitos.forEach((el) => el.id = i++)
@@ -25,7 +25,8 @@ carritoBtn.addEventListener('click', verCarrito(carrito))
 const menuBtn = document.getElementById("ver-menu");
 menuBtn.addEventListener('click', itemMenu(cafecitos));
 
-function itemMenu(caf) {
+
+function itemMenu(cafecitos) {
     let app = document.getElementById('app');
       for (let caf of cafecitos) {
         let div = document.createElement('div');
@@ -38,29 +39,35 @@ function itemMenu(caf) {
                     <button class="btn-add" id="agregar${caf.name}${caf.id}" type="submit">Agregar</button>
                     </article>`
         
-        app.append(div);
-        let btnAdd = document.getElementById(`agregar${caf.name}${caf.id}`);
-        btnAdd.addEventListener('click', () => carrito.push(caf));  
-        console.log(carrito)
-    
-    }    
-};
-
-
-
-function verCarrito(carr) {  
-    let app = document.getElementById('pedido');
-    for(let carr of carrito){
-        let div = document.createElement('div');
-        div.innerHTML = ` <article class="item-menu" id="">
-                            <h3 class="caf-title">${carr.name}</h3>
-                            <figure><img src=${carr.img} alt="ilust" id=""></figure>
-                            <p class="desc">${carr.descripcion}</p>
-                            <p class="precio">Precio: $${carr.precio}</p>
-                            `
         app.appendChild(div);
-
+        let btnAdd = document.getElementById(`agregar${caf.name}${caf.id}`);
+        btnAdd.addEventListener('click', () => carrito.push(caf));
     }
-    console.log(carrito)
+    console.log(carrito)    
 };
-carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+
+
+function verCarrito(carrito) {  
+    let orden = document.getElementById('carrito');
+    
+    for(let el of carrito){
+        let div = document.createElement('div');
+        div.innerHTML = `<article class="item-menu" id="">
+                    <h3 class="caf-title">${el.name}</h3>
+                    <figure><img src=${el.img} alt="ilust" id=""></figure>
+                    <p class="desc">${el.descripcion}</p>
+                    <p class="precio">Precio: $${el.precio}</p>
+                    `;
+        orden.appendChild(div);
+    }
+
+    console.log(orden)
+
+};
+
+
+
+if(carritoStorage.length > 0){
+    verCarrito();
+}
