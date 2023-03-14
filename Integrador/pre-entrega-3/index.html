@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/style.css">
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>TFI pre-entrega Nro3</title>
 </head>
 <body>
@@ -14,8 +15,8 @@
             <nav class="navbar">
                 <ul>
                     <!-- <li><a href="/guia.html">Guía</a></li> -->
-                    <li><a href="/" id="ver-menu">Menu</a></li>
-                    <li><a href="/carrito.html" id="ver-carrito">Carrito</a></li>
+                    <li><a href="#app" id="ver-menu">Menu</a></li>
+                    <li><a href="#carrito" id="ver-carrito"><i class="fa fa-shopping-basket"></i></a><div id="counter"></div></li>
                 </ul>
             </nav>
             <h1>Bienvenido a "Cafecitoo?"</h1>
@@ -26,9 +27,12 @@
 
     <section class="main">
         <article class="menu" id="app"></article>
-        <article class="menu" id="carrito" style="display:none"></article>
     </section>
-    <!-- <script src="luxon.js"></script> -->
+
+    <aside class="main">
+        <h1>Esta es su orden:</h1>
+        <article class="menu" id="carrito" style="display:none;"></article>
+    </aside>
     <script src="./assets/script.js"></script>
 </body>
 </html>

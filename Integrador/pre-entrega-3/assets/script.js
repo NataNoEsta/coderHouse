@@ -11,7 +11,8 @@ const cafecitos = [
     { name: "Mocachino", precio: 420, descripcion: "Capuchino con salsa de chocolate", img: "assets/images/caffe_mochaccino.png" }
 ];
 
-let carrito = [];
+// let carrito = [];
+let carrito = JSON.parse(localStorage.getItem("carrito")) || []
 localStorage.setItem("cafecitos", JSON.stringify(cafecitos))
 // localStorage.setItem("carrito", JSON.stringify(carrito));
 
@@ -36,23 +37,22 @@ function itemMenu(cafecitos) {
                     <h3 class="caf-title">${caf.name}</h3>
                     <figure><img src=${caf.img} alt="ilust"></figure>
                     <p class="desc">${caf.descripcion}</p>
-                    <p class="precio">Precio: $${caf.precio}</p>
-                    <button class="btn-add" id="agregar${caf.name}${caf.id}" type="submit">Agregar</button>
+                    <p class="precio">Precio: $${caf.precio},00</p>
+                    <button class="btn-add" id="${caf.id}" type="submit">Agregar</button>
                     </article>`
         
         app.appendChild(div);
-        let btnAdd = document.getElementById(`agregar${caf.name}${caf.id}`);
+        let btnAdd = document.getElementById(`${caf.id}`);
         btnAdd.addEventListener('click', () => {
-            let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+            // let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
             carrito.push(caf)
             
            localStorage.setItem("carrito", JSON.stringify(carrito)); 
         });
        
     }
-    return carrito;
+    // return carrito;
 };
-
 
 function verCarrito(carrito) {  
     let orden = document.getElementById('carrito');
@@ -63,8 +63,14 @@ function verCarrito(carrito) {
                     <h3 class="caf-title">${el.name}</h3>
                     <figure><img src=${el.img} alt="ilust"></figure>
                     <p class="desc">${el.descripcion}</p>
-                    <p class="precio">Precio: $${el.precio}</p>
+                    <p class="precio">Precio: $${el.precio},00</p>
                     `;
         orden.appendChild(div);
     }
+    orden.style = "display: content"
 };
+if (carrito.length > 0 ){
+    verCarrito();
+}else{
+    console.log('no hay carrito')
+}
