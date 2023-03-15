@@ -15,7 +15,7 @@
             <nav class="navbar">
                 <ul>
                     <!-- <li><a href="/guia.html">Guía</a></li> -->
-                    <li><a href="#app" id="ver-menu">Menu</a></li>
+                    <li><a href="#app">Menu</a></li>
                     <li><a href="#carrito" id="ver-carrito"><i class="fa fa-shopping-basket"></i></a><div id="counter"></div></li>
                 </ul>
             </nav>
@@ -25,14 +25,16 @@
         </section>
     </section>
 
-    <section class="main">
+    <section class="main" id="ver-menu">
         <article class="menu" id="app"></article>
     </section>
 
-    <aside class="main">
+    <aside class="aside">
         <h1>Esta es su orden:</h1>
         <article class="menu" id="carrito" style="display:none;"></article>
     </aside>
+    
     <script src="./assets/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

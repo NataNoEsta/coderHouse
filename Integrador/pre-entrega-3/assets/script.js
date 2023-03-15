@@ -25,7 +25,7 @@ const carritoBtn = document.getElementById("ver-carrito");
 carritoBtn.addEventListener('click', verCarrito(carrito))
 
 const menuBtn = document.getElementById("ver-menu");
-menuBtn.addEventListener('click', itemMenu(cafecitos));
+menuBtn.addEventListener("onload", itemMenu(cafecitos));
 
 
 function itemMenu(cafecitos) {
@@ -67,10 +67,11 @@ function verCarrito(carrito) {
                     `;
         orden.appendChild(div);
     }
-    orden.style = "display: content"
+    orden.style = "display: block"
 };
+
 if (carrito.length > 0 ){
-    verCarrito();
+    verCarrito(carrito);
 }else{
     console.log('no hay carrito')
 }
