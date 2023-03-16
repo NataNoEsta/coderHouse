@@ -12,19 +12,19 @@ h1 {
     text-align: center;
     font-size: 2rem;
 }
-.main, .orden {
+.main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-width:700px;
+    max-width:860px;
     margin:20px auto;
 }
 aside {
-    display: flex;
-    flex-direction: column;
+    display: block;
     max-width: 300px;
 }
 .navbar {
+    top: 0;
     display: flex;
     background-color: whitesmoke;
     
@@ -34,17 +34,34 @@ aside {
     text-decoration: none;
     list-style-type: none;
     display: inline-flex;
-    justify-content:space-evenly;  
-    letter-spacing: 2px;
-    font-size: 1.2rem;
+    justify-content:space-between;  
+    letter-spacing: 3px;
 }
-.navbar li,
+.navbar li {
+    margin:auto;
+}
 .navbar li a {
-    border-bottom: 1px solid rgba(158, 73, 73, 0.5); 
+    border-bottom: 2px solid rgba(158, 73, 73, 0.5); 
     padding-left:5px;
     padding-right: 5px;
     text-decoration:none;
+    font-size: 2rem;
+    font-weight: 600;
     color: rgb(31, 30, 30);
+}
+.navbar i {
+    font-size: 1rem;
+}
+.navbar i::before{
+    content:"carrito";
+    width: 10px;
+    font-size: 8px;
+    position: absolute;
+    right: 100px;
+    top: -10px;
+}
+#guia {
+    visibility: hidden;
 }
 .orden {
     justify-content: center;
@@ -66,8 +83,8 @@ aside {
     border-radius: 10px ;
     display: flex;
     flex-wrap: wrap;
-    max-width: 200px;
-    height: auto;
+    max-width: 260px;
+    max-height:380px;
 }
 .item-menu p {
     font-weight: 400;
@@ -93,7 +110,11 @@ aside {
     background-color: rgb(131, 103, 71);
     position: relative;
     display: block;
-    margin:10px auto;
+    margin:5px auto;
+}
+figure {
+    padding: 0;
+    margin: 0;
 }
 figure img{
     display: block;
@@ -105,10 +126,14 @@ figure img{
     width: 100%;
     font-size: 15px;
     margin-bottom: 0;
+    overflow: visible;
+    max-height: 30px;
 }
 input[type="submit"] , .btn-add{
-    margin-bottom: 2%;
+    width: 100%;
+    margin-bottom: 3%;
     appearance: none;
+    position:relative;
     border: 1px solid brown;
     border-radius: 25px;
     padding:2px 15px 2px 15px;
@@ -118,7 +143,16 @@ input[type="submit"] , .btn-add{
     font-size: 14px;
     line-height: 2;
 }
+.item-orden {
+    display: flex;
+    flex-direction: column;
+    max-width: 120px;
+    
+}
+.item-orden figure img {
+    width: 50px;
 
+}
 input[type="text"]{
     padding: 5px 2px;
     font-size: 14px; 
