@@ -1,6 +1,8 @@
 let carrito = JSON.parse(localStorage.getItem("carrito")) || []
 // localStorage.setItem("carrito", JSON.stringify(carrito));
+
 let cont = JSON.parse(localStorage.getItem("cont")) || 0;
+
 // hace visible el carrito
 const carritoBtn = document.getElementById("ver-carrito");
 carritoBtn.addEventListener('click', () => {
@@ -88,6 +90,7 @@ function verCarrito(carrito) {
         orden.appendChild(div);
     
     }
+    // vacía el localstorage
     let vaciarCarrito = document.getElementById("vaciar-carrito");
     vaciarCarrito.addEventListener('click', () => {
         carrito.length > 0 ? localStorage.clear() : vaciarCarrito.style = "display:none"
@@ -96,15 +99,18 @@ function verCarrito(carrito) {
     guia.innerHTML = `<p>Su pedido estará a las: ${getTime()}</p>`
 };
 
+// obtiene la hora actual cuando se hace un pedido y calcula 30 min a partir de esa hora
 function getTime() {
     const dt = luxon.DateTime.now();
     const dtplus = dt.plus({ minutes: 30 })
     return dtplus.toLocaleString(luxon.DateTime.TIME_SIMPLE);
 }
 
+// contenido de carrito vacío
 function carritoVacio() {
     return document.getElementById('carrito').innerHTML = `<p>No hay ordenes</p>`
 }
-// let pedidos = document.getElementById('carrito');
+
+// mostrar carrito / contenido de carrito vacío
 carrito.length > 0 ? verCarrito(carrito) : carritoVacio()
 
