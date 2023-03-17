@@ -61,9 +61,6 @@ h1 {
 .navbar i {
     font-size: 1.3rem;
 }
-#guia {
-    visibility: hidden;
-}
 .orden {
     justify-content: center;
 }
@@ -158,7 +155,7 @@ aside {
     position: fixed;
     float: right;
     top:80px;
-    width: 200px;
+    width: 220px;
     right: 0;
     background-color: white;
     padding:10px;
@@ -215,7 +212,10 @@ aside {
     display: none;
 }
 .btn-add#vaciar-carrito {
-    display: block;
-    bottom: 0 !important;
-    position:relative !important;
+    position: absolute !important;
+    bottom: 5px !important;
+
+}
+.no-border {
+    border:none !important;
 }

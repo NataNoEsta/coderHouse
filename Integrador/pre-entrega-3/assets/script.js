@@ -25,30 +25,33 @@ async function fetchdata() {
         let btnAdd = document.getElementById(`${caf.id}`);
         btnAdd.addEventListener('click', () => {
             let cont = 0
-            let match = carrito.some((el) => caf.id === el.id)  
-            if (!match) {  
+            let match = carrito.some((el) => caf.id === el.id)
+            if (!match) {
                 carrito.push(caf)
                 cont += caf.qty
                 console.log(caf.qty)
             } else {
-                while(match) {
-                    caf.qty += 1
+                while (match) {
+                    caf.qty ++
                     cont += caf.qty
                     console.log(caf.qty)
                     break
                 }
             }
             Swal.fire({
-                title:'Gracias',
-                text:'Su pedido ha sido recibido',
-                iconHtml: "assets/images/coffee.png",
-                confirmationButtonText:'Ok!',
-                backdrop:true,
-            
+                title: 'Gracias',
+                text: 'Su pedido ha sido recibido',
+                iconHtml: '<img src="assets/images/coffee.png" width="100px">',
+                confirmationButtonText: 'Ok!',
+                backdrop: true,
+                customClass: {
+                    icon: 'no-border'
+                }
+
             });
             localStorage.setItem("carrito", JSON.stringify(carrito));
             localStorage.setItem("cont", cont)
-            
+
         });
         let contador = localStorage.getItem("cont")
         contador ? document.getElementById("item-count").innerText = `${contador}` : ''
@@ -66,21 +69,30 @@ function verCarrito(carrito) {
                     <h3 class="caf-title">${el.name}</h3>
                     <figure><img src=${el.img} alt="ilust"></figure>
                     <p class="desc">${el.descripcion}</p>
-                    <p class="desc">Cantidad: ${el.qty}</p>
+                    <p class="desc" id="el-qty">Cantidad: ${el.qty}</p>
                     <p class="precio">Precio: $${el.precio},00</p>
                     `;
-        orden.appendChild(div);           
+        orden.appendChild(div);
+    
     }
     let vaciarCarrito = document.getElementById("vaciar-carrito");
     vaciarCarrito.addEventListener('click', () => {
-        carrito.length > 0 ? localStorage.clear() : vaciarCarrito.style="display:none"
+        carrito.length > 0 ? localStorage.clear() : vaciarCarrito.style = "display:none"
     })
+    let guia = document.getElementById("guia");
+    guia.innerHTML = `<p>Su pedido estará a las: ${getTime()}</p>`
 };
-function updateQty() {
-    //
+
+function getTime() {
+    dt = luxon.DateTime.now();
+    dtplus = dt.plus({ minutes: 30 })
+    console.log(dtplus.toLocaleString(luxon.DateTime.TIME_SIMPLE))
+    return dtplus.toLocaleString(luxon.DateTime.TIME_SIMPLE);
 }
+
 function carritoVacio() {
     return document.getElementById('carrito').innerHTML = `<p>No hay ordenes</p>`
 }
 // let pedidos = document.getElementById('carrito');
-carrito.length > 0 ? verCarrito(carrito) :  carritoVacio()
+carrito.length > 0 ? verCarrito(carrito) : carritoVacio()
+
