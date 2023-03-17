@@ -1,15 +1,26 @@
 let carrito = JSON.parse(localStorage.getItem("carrito")) || []
 // localStorage.setItem("carrito", JSON.stringify(carrito));
-
+let cont = JSON.parse(localStorage.getItem("cont")) || 0;
+// hace visible el carrito
 const carritoBtn = document.getElementById("ver-carrito");
 carritoBtn.addEventListener('click', () => {
     document.getElementById("sidebar").style = "display:block";
 })
 
+// oculta el carrito al hacer click en el background
+document.addEventListener('mouseup', function(e) {
+    let aside = document.getElementById("sidebar");
+    if(!aside.contains(e.target)) {
+        aside.style = "display: none"
+    }
+})
+
+// función asíncrona // obtiene los datos de un JSON local
 async function fetchdata() {
     let response = await fetch("./data/data.json")
     let data = await response.json();
     let app = document.getElementById('app');
+ 
     for (let caf of data) {
         let div = document.createElement('div');
         div.innerHTML = `
@@ -22,22 +33,23 @@ async function fetchdata() {
                         </article>`
 
         app.appendChild(div);
+     
+        
         let btnAdd = document.getElementById(`${caf.id}`);
         btnAdd.addEventListener('click', () => {
-            let cont = 0
+            // asigna a 'match' si el item con el id existe en el carrito
+            // si 'f' lo agrega, si no aumenta la cantidad (qty)      
             let match = carrito.some((el) => caf.id === el.id)
             if (!match) {
                 carrito.push(caf)
                 cont += caf.qty
-                console.log(caf.qty)
             } else {
-                while (match) {
-                    caf.qty ++
-                    cont += caf.qty
-                    console.log(caf.qty)
-                    break
-                }
+                caf.qty += 1
+                cont ++
+                
             }
+            
+            // alert de 'sweetAlert // se dispara cada ez que se agrega un item
             Swal.fire({
                 title: 'Gracias',
                 text: 'Su pedido ha sido recibido',
@@ -49,16 +61,17 @@ async function fetchdata() {
                 }
 
             });
+            // se guardan los items del carrito en el localStorage
             localStorage.setItem("carrito", JSON.stringify(carrito));
             localStorage.setItem("cont", cont)
 
         });
-        let contador = localStorage.getItem("cont")
-        contador ? document.getElementById("item-count").innerText = `${contador}` : ''
     }
 };
 
 fetchdata()
+
+cont ? document.getElementById("item-count").innerText = `${cont}` : ''
 
 function verCarrito(carrito) {
     let orden = document.getElementById('carrito');
@@ -84,9 +97,8 @@ function verCarrito(carrito) {
 };
 
 function getTime() {
-    dt = luxon.DateTime.now();
-    dtplus = dt.plus({ minutes: 30 })
-    console.log(dtplus.toLocaleString(luxon.DateTime.TIME_SIMPLE))
+    const dt = luxon.DateTime.now();
+    const dtplus = dt.plus({ minutes: 30 })
     return dtplus.toLocaleString(luxon.DateTime.TIME_SIMPLE);
 }
 
