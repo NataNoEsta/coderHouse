@@ -214,3 +214,8 @@ aside {
 #sidebar {
     display: none;
 }
+.btn-add#vaciar-carrito {
+    display: block;
+    bottom: 0 !important;
+    position:relative !important;
+}

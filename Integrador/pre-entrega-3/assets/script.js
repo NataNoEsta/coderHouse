@@ -41,7 +41,7 @@ async function fetchdata() {
             Swal.fire({
                 title:'Gracias',
                 text:'Su pedido ha sido recibido',
-                iconHtml: 'https://cdn-icons-png.flaticon.com/512/2920/2920072.png',
+                iconHtml: "assets/images/coffee.png",
                 confirmationButtonText:'Ok!',
                 backdrop:true,
             
@@ -71,6 +71,10 @@ function verCarrito(carrito) {
                     `;
         orden.appendChild(div);           
     }
+    let vaciarCarrito = document.getElementById("vaciar-carrito");
+    vaciarCarrito.addEventListener('click', () => {
+        carrito.length > 0 ? localStorage.clear() : vaciarCarrito.style="display:none"
+    })
 };
 function updateQty() {
     //
