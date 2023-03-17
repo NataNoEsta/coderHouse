@@ -38,12 +38,20 @@ async function fetchdata() {
                     break
                 }
             }
+            Swal.fire({
+                title:'Gracias',
+                text:'Su pedido ha sido recibido',
+                iconHtml: 'https://cdn-icons-png.flaticon.com/512/2920/2920072.png',
+                confirmationButtonText:'Ok!',
+                backdrop:true,
+            
+            });
             localStorage.setItem("carrito", JSON.stringify(carrito));
             localStorage.setItem("cont", cont)
             
         });
         let contador = localStorage.getItem("cont")
-        document.getElementById("item-count").innerText = `${contador}`
+        contador ? document.getElementById("item-count").innerText = `${contador}` : ''
     }
 };
 
@@ -58,25 +66,17 @@ function verCarrito(carrito) {
                     <h3 class="caf-title">${el.name}</h3>
                     <figure><img src=${el.img} alt="ilust"></figure>
                     <p class="desc">${el.descripcion}</p>
-                    <p class="desc" id="item-qty">Cantidad: ${el.qty}</p>
+                    <p class="desc">Cantidad: ${el.qty}</p>
                     <p class="precio">Precio: $${el.precio},00</p>
                     `;
-        orden.appendChild(div);
-        let divQty = document.getElementById('item-qty');
-        el.qty > 1 ? divQty.innerText = `${el.qty}` : ''
-        
+        orden.appendChild(div);           
     }
 };
-
+function updateQty() {
+    //
+}
 function carritoVacio() {
     return document.getElementById('carrito').innerHTML = `<p>No hay ordenes</p>`
 }
 // let pedidos = document.getElementById('carrito');
 carrito.length > 0 ? verCarrito(carrito) :  carritoVacio()
-
-// if (carrito.length > 0) {
-//     verCarrito(carrito);
-// } else {
-//     document.getElementById('carrito').innerHTML = 
-//     console.log('no hay carrito')
-// }
