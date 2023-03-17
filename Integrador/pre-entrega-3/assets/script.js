@@ -1,12 +1,16 @@
 let carrito = JSON.parse(localStorage.getItem("carrito")) || []
 // localStorage.setItem("carrito", JSON.stringify(carrito));
 
+const carritoBtn = document.getElementById("ver-carrito");
+carritoBtn.addEventListener('click', () => {
+    document.getElementById("sidebar").style = "display:block";
+})
+
 async function fetchdata() {
     let response = await fetch("./data/data.json")
     let data = await response.json();
     let app = document.getElementById('app');
     for (let caf of data) {
-        console.log(caf)
         let div = document.createElement('div');
         div.innerHTML = `
                         <article class="item-menu">
@@ -20,36 +24,30 @@ async function fetchdata() {
         app.appendChild(div);
         let btnAdd = document.getElementById(`${caf.id}`);
         btnAdd.addEventListener('click', () => {
-            // let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-            let match = carrito.some((el) => caf.id === el.id)
-            let count = 0;
-            carrito.count = count
-            if (!match) {
+            let cont = 0
+            let match = carrito.some((el) => caf.id === el.id)  
+            if (!match) {  
                 carrito.push(caf)
-                console.log(carrito)
+                cont += caf.qty
+                console.log(caf.qty)
             } else {
-                count++
-                console.log()
+                while(match) {
+                    caf.qty += 1
+                    cont += caf.qty
+                    console.log(caf.qty)
+                    break
+                }
             }
-
-
             localStorage.setItem("carrito", JSON.stringify(carrito));
+            localStorage.setItem("cont", cont)
+            
         });
-
+        let contador = localStorage.getItem("cont")
+        document.getElementById("item-count").innerText = `${contador}`
     }
 };
 
 fetchdata()
-
-const carritoBtn = document.getElementById("ver-carrito");
-
-carritoBtn.addEventListener('click', () => {
-    document.getElementById("sidebar").style = "display:block"
-})
-// const menuBtn = document.getElementById("ver-menu");
-// menuBtn.addEventListener("onload", fetchdata());
-
-
 
 function verCarrito(carrito) {
     let orden = document.getElementById('carrito');
@@ -60,16 +58,25 @@ function verCarrito(carrito) {
                     <h3 class="caf-title">${el.name}</h3>
                     <figure><img src=${el.img} alt="ilust"></figure>
                     <p class="desc">${el.descripcion}</p>
+                    <p class="desc" id="item-qty">Cantidad: ${el.qty}</p>
                     <p class="precio">Precio: $${el.precio},00</p>
                     `;
         orden.appendChild(div);
+        let divQty = document.getElementById('item-qty');
+        el.qty > 1 ? divQty.innerText = `${el.qty}` : ''
+        
     }
-    orden.style = "display: block"
 };
 
-
-if (carrito.length > 0) {
-    verCarrito(carrito);
-} else {
-    console.log('no hay carrito')
+function carritoVacio() {
+    return document.getElementById('carrito').innerHTML = `<p>No hay ordenes</p>`
 }
+// let pedidos = document.getElementById('carrito');
+carrito.length > 0 ? verCarrito(carrito) :  carritoVacio()
+
+// if (carrito.length > 0) {
+//     verCarrito(carrito);
+// } else {
+//     document.getElementById('carrito').innerHTML = 
+//     console.log('no hay carrito')
+// }

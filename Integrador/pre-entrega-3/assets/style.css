@@ -3,30 +3,36 @@
 * {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
 }
 body {
-    background-color: bisque;
+    background: linear-gradient(125deg, pink, rgb(156, 245, 183)); 
 }
 h1 {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
+}
+.header{
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
 }
 .main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     max-width:860px;
-    margin:20px auto;
-}
-aside {
-    display: block;
-    max-width: 300px;
+    margin:15% auto 0;
+    padding-bottom: 5%;
 }
 .navbar {
     top: 0;
     display: flex;
     background-color: whitesmoke;
+    box-shadow: 0px 2px 6px rgb(0,0,0, 30%);
     
 }
 .navbar ul {
@@ -34,31 +40,21 @@ aside {
     text-decoration: none;
     list-style-type: none;
     display: inline-flex;
-    justify-content:space-between;  
+    justify-content:space-around;
+    text-align: center;  
     letter-spacing: 3px;
 }
 .navbar li {
     margin:auto;
 }
 .navbar li a {
-    border-bottom: 2px solid rgba(158, 73, 73, 0.5); 
-    padding-left:5px;
-    padding-right: 5px;
     text-decoration:none;
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 2.5rem;
+    font-weight: 800;
     color: rgb(31, 30, 30);
 }
 .navbar i {
-    font-size: 1rem;
-}
-.navbar i::before{
-    content:"carrito";
-    width: 10px;
-    font-size: 8px;
-    position: absolute;
-    right: 100px;
-    top: -10px;
+    font-size: 1.3rem;
 }
 #guia {
     visibility: hidden;
@@ -67,24 +63,26 @@ aside {
     justify-content: center;
 }
 .menu {
+    margin-top: 10px;
     width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
     justify-content: space-evenly;
-    gap:10px;
-    max-width: 100%;
+    gap:15px;
 }
 .item-menu {
     justify-content: center;
-    border: 1px solid black;
+    background-color: white;
+    box-shadow: 0px 1px 8px rgb(131, 103, 71, 50%);
     padding: 0 10px;
     border-radius: 10px ;
     display: flex;
     flex-wrap: wrap;
     max-width: 260px;
     max-height:380px;
+    margin-bottom: 10px;
 }
 .item-menu p {
     font-weight: 400;
@@ -93,6 +91,7 @@ aside {
 .item-menu .precio {
     width: 100%;
     text-align: center;
+    position: relative;
     background-color:burlywood;
 }
 .caf-title, h3 {
@@ -100,14 +99,14 @@ aside {
     line-height: 1;
     text-align: center;
     letter-spacing: 2px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     width: 100%;
 }
 .caf-title::after{
     content:"";
     width:90%;
     height:2px;
-    background-color: rgb(131, 103, 71);
+    background-color: rgb(196, 121, 111);
     position: relative;
     display: block;
     margin:5px auto;
@@ -117,6 +116,7 @@ figure {
     margin: 0;
 }
 figure img{
+
     display: block;
     position:relative;
     width: 150px;
@@ -134,7 +134,7 @@ input[type="submit"] , .btn-add{
     margin-bottom: 3%;
     appearance: none;
     position:relative;
-    border: 1px solid brown;
+    border: 2px solid lightcoral;
     border-radius: 25px;
     padding:2px 15px 2px 15px;
     background-color: lightpink;
@@ -143,15 +143,47 @@ input[type="submit"] , .btn-add{
     font-size: 14px;
     line-height: 2;
 }
+aside {
+    position: fixed;
+    float: right;
+    top:80px;
+    width: 200px;
+    right: 0;
+    background-color: white;
+    padding:10px;
+    overflow: scroll;
+    border-left: 1px solid grey;
+    bottom: 0;
+}
+
 .item-orden {
     display: flex;
     flex-direction: column;
-    max-width: 120px;
-    
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 2px solid salmon;
 }
 .item-orden figure img {
-    width: 50px;
+    max-width: 100px;
 
+}
+.item-orden .caf-title {
+    font-size: 0.9rem;
+}
+.item-orden .desc {
+    font-size: .8rem;
+    text-align: center;
+}
+.item-orden .precio {
+    background-color: lightpink;
+    font-size: .9rem;
+    margin: 0 1px 10px;
+}
+.tit {
+    font-size: 1.3rem;
+    font-weight: 600;
+    background-color: rgb(235, 194, 208);
 }
 input[type="text"]{
     padding: 5px 2px;
@@ -163,4 +195,19 @@ input[type="text"]{
 }
 #ver-menu, #ver-carrito {
     cursor: pointer;
+}
+#item-count {
+    font-size:10px;
+    font-weight: 700;
+    display: inline;
+    position:absolute;
+    margin-top:18px;
+    color: crimson;
+    padding: 2px;
+}
+#item-count::before{
+    content: "+";
+}
+#sidebar {
+    display: none;
 }
