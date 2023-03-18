@@ -45,6 +45,9 @@ async function fetchdata() {
             if (!match) {
                 carrito.push(caf)
                 cont += caf.qty
+                let asd = parseInt(caf.qty)
+                console.log(asd.type)
+                console.log(parseInt(caf.qty))
             } else {
                 caf.qty += 1
                 cont ++
@@ -66,14 +69,14 @@ async function fetchdata() {
             // se guardan los items del carrito en el localStorage
             localStorage.setItem("carrito", JSON.stringify(carrito));
             localStorage.setItem("cont", cont)
-
+            cont ? document.getElementById("item-count").innerText = `${cont}` : ''
         });
     }
 };
 
 fetchdata()
 
-cont ? document.getElementById("item-count").innerText = `${cont}` : ''
+
 
 function verCarrito(carrito) {
     let orden = document.getElementById('carrito');
@@ -88,6 +91,7 @@ function verCarrito(carrito) {
                     <p class="precio">Precio: $${el.precio},00</p>
                     `;
         orden.appendChild(div);
+        
     
     }
     // vacía el localstorage
