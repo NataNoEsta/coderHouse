@@ -111,7 +111,7 @@ function getTime() {
 }
 
 // contenido de carrito vacío
-function carritoVacio() {
+const carritoVacio = () => {
     return document.getElementById('carrito').innerHTML = `<p>No hay ordenes</p>`
 }
 

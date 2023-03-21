@@ -1,24 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,600;0,700;1,100;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Italiana&family=Rozha+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,700&display=swap');
+
 * {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
 }
 body {
-    background: linear-gradient(125deg, pink, rgb(156, 245, 183)); 
+    background: #ffc7d9; /* fallback for old browsers */
+    /* background: -webkit-linear-gradient(-20deg, #eeabc1 , #c3c3e0, #3b8d99) 10%;
+    background: linear-gradient(-20deg, #eeabc1, #c3c3e0, #3b8d99) 10%;  */
+    background-attachment: fixed;  
 }
 h1 {
     text-align: center;
     font-size: 1.5rem;
 }
-.header{
+.top-header{
     display: block;
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
+    z-index: 1;
+}
+
+.header {
+    position:relative;
+    display: block;
+    margin-top:10%;
 
 }
 
@@ -27,13 +38,15 @@ h1 {
     flex-direction: row;
     flex-wrap: wrap;
     max-width:860px;
-    margin:15% auto 0;
+    margin:0 auto;
     padding-bottom: 5%;
 }
 .navbar {
     top: 0;
     display: flex;
-    background-color: whitesmoke;
+    min-height: 110px;
+    align-items: center;
+    background-color: rgb(254, 255, 209);
     box-shadow: 0px 2px 6px rgb(0,0,0, 30%);
     
 }
@@ -42,20 +55,20 @@ h1 {
     text-decoration: none;
     list-style-type: none;
     display: inline-flex;
-    justify-content:space-around;
-    text-align: center;  
-}
-.navbar li {
-    margin:auto;
+    margin:0 auto;
+    justify-content:space-evenly;
+    text-align: left;  
 }
 .navbar li a {
     font-family:'Sansita', sans-serif;
     text-decoration:none;
-    font-size: 3rem;
-    font-weight: 900;
+    font-size: 2.2rem;
+    font-weight: 700;
     color: rgb(31, 30, 30);
 }
-.navbar li a #menu {
+.navbar li a#menu {
+    font-weight: 900;
+    font-size: 3rem;
     font-family: 'Sansita',sans-serif;
 }
 .navbar i {
@@ -71,13 +84,17 @@ h1 {
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     gap:15px;
 }
 .item-menu {
     justify-content: center;
-    background-color: white;
-    box-shadow: 0px 1px 8px rgb(131, 103, 71, 50%);
+    border-left: 1px solid rgb(52, 55, 248);
+    border-top: 1px solid rgb(52, 55, 248);
+    background-color: rgb(179, 207, 219);
+    /* box-shadow: inset 4px 12px 30px rgba(201, 192, 192, 0.8), 5px 6px 0 2px rgba(255, 41, 219, 0.5); */
+    box-shadow: 6px 6px 0 2px rgba(248, 44, 255, 0.8);
+
     padding: 0 10px;
     border-radius: 10px ;
     display: flex;
@@ -94,7 +111,8 @@ h1 {
     width: 100%;
     text-align: center;
     position: relative;
-    background-color:burlywood;
+    color: azure;
+    background-color:rgb(235, 143, 253);
 }
 .caf-title, h3 {
     font-family: 'Italiana', serif;
@@ -107,8 +125,8 @@ h1 {
 .caf-title::after{
     content:"";
     width:90%;
-    height:2px;
-    background-color: rgb(196, 121, 111);
+    height:3px;
+    background-color: rgb(219, 219, 219);
     position: relative;
     display: block;
     margin:5px auto;
@@ -133,22 +151,23 @@ figure img{
 }
 .btn-add{
     width: 100%;
-    margin-bottom: 3%;
+    margin-bottom: 4%;
     appearance: none;
     position:relative;
-    border: 2px solid lightcoral;
-    border-radius: 25px;
+    border: 2px solid rgb(240, 128, 240);
+    border-radius: 10px;
     padding:2px 15px 2px 15px;
-    background-color: lightpink;
-    color: brown;
+    background-color: rgb(255, 255, 255);
+    color: rgb(252, 94, 204);
     cursor: pointer;
     font-size: 14px;
     line-height: 2;
 }
 .btn-add:hover{
-    border: 2px solid rgb(255, 157, 157);
-    background-color: rgb(189, 157, 211);
-    color: rgb(196, 102, 102);
+    border: 2px solid rgb(255, 143, 236);
+    background-color: #e7cbd4;
+    /* box-shadow: inset 4px 3px 8px 1px rgba(236, 127, 204, 0.3),inset -2px -3px 10px 3px rgba(189, 89, 159, 0.3); */
+    color: rgb(184, 77, 152);
     border-style: inset;
 }
 aside {
@@ -184,7 +203,7 @@ aside {
     text-align: center;
 }
 .item-orden .precio {
-    background-color: lightpink;
+    background-color: rgb(255, 147, 163);
     font-size: .9rem;
     margin: 0 1px 10px;
 }
@@ -195,6 +214,21 @@ aside {
 }
 #ver-menu, #ver-carrito {
     cursor: pointer;
+}
+li#guia{
+    width: 300px;    
+    text-decoration: none;
+    list-style-type: none;
+    font-weight: 600;
+    font-size: 11px;
+    left: 100px;
+    z-index: 1;
+    margin-top: -260px;
+    width: fit-content;
+    height: 35px;
+    border-bottom: 4px solid #e7cbd4;
+    position: absolute;
+
 }
 #item-count {
     font-size:10px;
@@ -218,4 +252,13 @@ aside {
 }
 .no-border {
     border:none !important;
+}
+li a:active{
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: aqua;
+    
+}
+li a:hover {
+    color: crimson;
 }

@@ -14,3 +14,4 @@ class Cafe {
         return `${this.id, this.name, this.descripcion, this.img, this.precio, this.qty}`
     }
 }
+export {Cafe}
