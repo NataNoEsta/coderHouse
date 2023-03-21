@@ -61,6 +61,24 @@ h1 {
     color: rgb(31, 30, 30);
     transition:all;
 }
+.first-header {
+    display: none;
+    top: 0;
+    position: absolute;
+    z-index: 2;  
+    background-color: rgba(0, 0, 0, 0.9);
+    right: 0;
+    left:0;
+}
+.first-header p#reloj{
+    color: rgba(255, 255, 255, 0.829);
+    justify-items: center;
+    text-align: center;
+    font-size: 12px;
+    font-weight:500;
+    line-height: 1;
+
+}
 .navbar li a#menu {
     font-family: 'Sansita',sans-serif;
     font-weight: 900;
@@ -235,18 +253,7 @@ aside {
 .no-border {
     border:none !important;
 }
-li#guia{
-    z-index: 1;
-    position:relative;
-    top: -220px;
-    left: 0;
-    padding:0;
-    width: 130px;
-    text-align: center;
-    list-style-type: none;
-    font-weight: 600;
-    font-size: .7rem;
-}
+
 li a:active{
     color: crimson;
     

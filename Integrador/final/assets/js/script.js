@@ -72,8 +72,9 @@ async function fetchdata() {
             // se guardan los items del carrito en el localStorage
             localStorage.setItem("carrito", JSON.stringify(carrito));
             localStorage.setItem("cont", cont)
-            cont ? document.getElementById("item-count").innerText = `${cont}` : ''
+            
         });
+        cont > 0 ? document.getElementById("item-count").innerText = `${cont}` : ''
     }
 };
 
@@ -100,12 +101,16 @@ function verCarrito(carrito) {
     // vacía el localstorage
     let vaciarCarrito = document.getElementById("vaciar-carrito");
     vaciarCarrito.addEventListener('click', () => {
-        carrito.length > 0 ? localStorage.clear() : vaciarCarrito.style = "display:none"
-    })
-    let guia = document.getElementById("guia");
-    guia.innerHTML = `<p>Su pedido estará a las: ${getTime()}</p>`
-};
+        carrito.length > 0 ? localStorage.clear() : "";
+    });
 
+    let reloj = document.getElementById("reloj");
+    reloj.innerText = `Su pedido estará a las: ${getTime()}`
+};
+if(carrito.length != 0) {
+    let aviso = document.getElementById("guia");
+    aviso.style="display:block";
+}
 // obtiene la hora actual cuando se hace un pedido y calcula 30 min a partir de esa hora
 function getTime() {
     const dt = luxon.DateTime.now();
@@ -113,11 +118,12 @@ function getTime() {
     return dtplus.toLocaleString(luxon.DateTime.TIME_SIMPLE);
 }
 
+
 // contenido de carrito vacío
-function carritoVacio() {
-    return document.getElementById('carrito').innerHTML = `<p>No hay ordenes</p>`
-}
+// function carritoVacio() {
+//     return document.getElementById('carrito').innerHTML = `<p>No hay ordenes</p>`
+// }
 
 // mostrar carrito / contenido de carrito vacío
-carrito.length > 0 ? verCarrito(carrito) : carritoVacio()
+carrito.length > 0 ? verCarrito(carrito) : "Su carrito está vacío";
 
