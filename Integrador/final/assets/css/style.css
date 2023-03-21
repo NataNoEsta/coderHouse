@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,600;0,700;1,100;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Italiana&family=Rozha+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sansita:ital,wght@0,400;0,700;0,800;0,900;1,700&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+body {
+    background: linear-gradient(125deg, pink, rgb(156, 245, 183)); 
+}
+h1 {
+    text-align: center;
+    font-size: 1.5rem;
+}
+.top-header{
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+}
+.header{
+    position:relative;
+    margin-top: 10%;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width:860px;
+    margin: 0 auto;
+    padding-bottom: 5%;
+    z-index: 2;
+}
+.navbar {
+    top: 0;
+    height: 100px;
+    display: flex;
+    background-color: whitesmoke;
+    box-shadow: 0px 2px 6px rgb(0,0,0, 30%);
+    
+}
+.navbar ul {
+    width:100%;
+    align-items: center;
+    text-decoration: none;
+    list-style-type: none;
+    display: inline-flex;
+    justify-content:space-around;
+    text-align: center;  
+
+}
+.navbar li a {
+    font-family:'Sansita', sans-serif;
+    text-decoration:none;
+    font-size: 2rem;
+    font-weight: 800;
+    color: rgb(31, 30, 30);
+    transition:all;
+}
+.navbar li a#menu {
+    font-family: 'Sansita',sans-serif;
+    font-weight: 900;
+    font-size: 3rem;
+}
+.navbar i {
+    font-size: 1.3rem;
+}
+.orden {
+    justify-content: center;
+}
+.menu {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+    gap:15px;
+}
+.item-menu {
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0px 1px 8px rgb(131, 103, 71, 50%);
+    padding: 0 10px;
+    border-radius: 10px ;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 260px;
+    max-height:380px;
+    margin-bottom: 10px;
+}
+.item-menu p {
+    font-weight: 400;
+    text-align: center;
+}
+.item-menu .precio {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    background-color:burlywood;
+}
+.caf-title, h3 {
+    font-family: 'Italiana', serif;
+    line-height: 1;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+    width: 100%;
+}
+.caf-title::after{
+    content:"";
+    width:90%;
+    height:2px;
+    background-color: rgb(196, 121, 111);
+    position: relative;
+    display: block;
+    margin:5px auto;
+}
+figure {
+    padding: 0;
+    margin: 0;
+}
+figure img{
+
+    display: block;
+    position:relative;
+    width: 150px;
+    height: auto;
+}
+.desc {
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 0;
+    overflow: visible;
+    max-height: 30px;
+}
+.btn-add{
+    width: 100%;
+    margin-bottom: 1.5rem;
+    appearance: none;
+    font-weight: 600;
+    position:relative;
+    border: 2px solid lightcoral;
+    border-radius: 25px;
+    padding:2px 15px 2px 15px;
+    background-color: lightpink;
+    color: brown;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 2;
+}
+.btn-add:hover{
+    border: 2px solid rgb(255, 157, 157);
+    background-color: rgb(189, 157, 211);
+    color: rgb(196, 102, 102);
+    border-style: inset;
+}
+aside {
+    position: fixed;
+    float: right;
+    top:calc(100vh - (100% - 100px));
+    z-index: 2;
+    width: 230px;
+    right: 0;
+    background-color: white;
+    padding:10px;
+    overflow-y: scroll;
+    border-left: 1px solid grey;
+    bottom: 0;
+}
+
+.item-orden {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: 2px solid salmon;
+}
+.item-orden figure img {
+    max-width: 120px;
+    position: relative;
+    margin: -30px !important;
+
+}
+.item-orden .caf-title {
+    font-size: 0.9rem;
+    margin:0 !important;
+
+}
+.item-orden .desc {
+    font-size: .8rem;
+    text-align: center;
+}
+.item-orden .precio {
+    background-color: lightpink;
+    font-size: .9rem;
+    margin: 0 1px 10px;
+}
+.tit {
+    font-size: 1.3rem;
+    font-weight: 600;
+    background-color: rgb(235, 194, 208);
+}
+#ver-menu, #ver-carrito {
+    cursor: pointer;
+}
+#item-count {
+    font-size:10px;
+    font-weight: 700;
+    display: inline;
+    position:absolute;
+    margin-top:18px;
+    color: crimson;
+    padding: 2px;
+}
+#item-count::before{
+    content: "+";
+}
+#sidebar {
+    display: none;
+}
+.btn-add#vaciar-carrito {
+    width: 90%;
+    align-self: center;
+    position: absolute !important;
+    bottom: 5px !important;
+
+}
+.no-border {
+    border:none !important;
+}
+li#guia{
+    z-index: 1;
+    position:relative;
+    top: -220px;
+    left: 0;
+    padding:0;
+    width: 130px;
+    text-align: center;
+    list-style-type: none;
+    font-weight: 600;
+    font-size: .7rem;
+}
+li a:active{
+    color: crimson;
+    
+}
+li a:hover{
+    color: crimson;
+    text-decoration: underline;
+    text-decoration-color: black;
+    transition: ease-in-out 200ms;
+    
+}
