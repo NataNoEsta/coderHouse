@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "jquery": "^3.6.4",
+    "sass": "^1.59.3"
+  }
+}

@@ -5,7 +5,7 @@ class Cafe {
         this.descripcion = descripcion;
         this.img = img
         this.precio = precio
-        this.qty = 0
+        this.qty = qty
     }
     setQty() {
         return this.qty += 1;

@@ -194,16 +194,21 @@ aside {
 
 .item-orden {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     flex-wrap: wrap;
     align-items: center;
     border-bottom: 2px solid salmon;
 }
+.item-orden figure {
+    float: left;
+    width:50%
+}
+
 .item-orden figure img {
     max-width: 120px;
     position: relative;
-    margin: -30px !important;
+    margin: -20px !important;
 
 }
 .item-orden .caf-title {
@@ -213,9 +218,16 @@ aside {
 }
 .item-orden .desc {
     font-size: .8rem;
-    text-align: center;
+    width:50%;
+    display: inline;
+}
+.item-orden .desc#el-qty {
+    width: 50%;
+    float:right;
 }
 .item-orden .precio {
+    position:relative;
+    align-items: center;
     background-color: lightpink;
     font-size: .9rem;
     margin: 0 1px 10px;
@@ -246,8 +258,8 @@ aside {
 .btn-add#vaciar-carrito {
     width: 90%;
     align-self: center;
-    position: absolute !important;
-    bottom: 5px !important;
+    position: relative !important;
+    margin: 30px auto 0 auto;
 
 }
 .no-border {
