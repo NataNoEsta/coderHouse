@@ -17,7 +17,9 @@
                 <ul>
                     <li><a href="page/about.html">about</a></li>
                     <li><a href="/" id="menu">Café pick Up!</a></li>
-                    <li><a href="#" id="ver-carrito"><i class="fa fa-shopping-basket"></i><div id="item-count"></div></a></li>
+                    <li><a id="ver-carrito"><i class="fa fa-shopping-basket"></i>
+                            <div id="item-count"></div>
+                        </a></li>
 
                 </ul>
             </nav>
@@ -34,12 +36,12 @@
 
     <aside class="aside" id="sidebar">
         <h1 class="tit">Esta es su orden:</h1>
-        <article class="menu" id="carrito"></article>
-        <button class="btn-add" id="vaciar-carrito" style="display:block;">Vaciar carrito</button>
+        <article class="menu" id="pedido"></article>
+        <button class="btn-add" id="vaciar-carrito" disabled>Vaciar carrito</button>
     </aside>
     
     <script src="assets/js/script.js" type="module"></script>
-    <script src="data/cafedata.js" type="module"></script>
+    <script src="/assets/js/jquery-2.0.0.min.js" type="text/script"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 </body>

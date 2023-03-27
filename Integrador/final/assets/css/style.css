@@ -179,6 +179,7 @@ figure img{
     border-style: inset;
 }
 aside {
+    /* visibility: hidden; */
     position: fixed;
     float: right;
     top:calc(100vh - (100% - 100px));
@@ -191,7 +192,9 @@ aside {
     border-left: 1px solid grey;
     bottom: 0;
 }
-
+/* .show {
+    visibility:visible;
+} */
 .item-orden {
     display: flex;
     flex-direction: row;
@@ -219,14 +222,13 @@ aside {
 .item-orden .desc {
     font-size: .8rem;
     width:50%;
-    display: inline;
+    float:left;
 }
 .item-orden .desc#el-qty {
     width: 50%;
     float:right;
 }
 .item-orden .precio {
-    position:relative;
     align-items: center;
     background-color: lightpink;
     font-size: .9rem;
@@ -252,15 +254,24 @@ aside {
 #item-count::before{
     content: "+";
 }
-#sidebar {
-    display: none;
-}
+
 .btn-add#vaciar-carrito {
     width: 90%;
     align-self: center;
     position: relative !important;
     margin: 30px auto 0 auto;
 
+}
+.btn-add:disabled, .btn-add#vaciar-carrito:disabled{
+    background-color: #ffc7d9;
+    border: 2px solid #ffc7d9;
+    color: white;
+}
+.btn-add:disabled:hover, .btn-add#vaciar-carrito:disabled:hover{
+    background-color: #ffc7d9;
+    color: white;
+    border: 2px solid #ffc7d9;
+    cursor: default;
 }
 .no-border {
     border:none !important;
