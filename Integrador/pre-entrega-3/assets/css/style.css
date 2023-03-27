@@ -170,7 +170,8 @@ figure img{
     color: rgb(184, 77, 152);
     border-style: inset;
 }
-aside {
+.aside {
+    /* visibility: hidden; */
     position: fixed;
     float: right;
     top:calc(100vh - (100% - 100px));
@@ -182,7 +183,9 @@ aside {
     border-left: 1px solid grey;
     bottom: 0;
 }
-
+.show {
+    visibility: visible;
+}
 .item-orden {
     display: flex;
     flex-direction: row;
@@ -239,9 +242,7 @@ div#guia{
 #item-count::before{
     content: "+";
 }
-#sidebar {
-    display: none;
-}
+
 .btn-add#vaciar-carrito {
     width:90%;
     margin:30px auto 0 auto;
