@@ -173,23 +173,27 @@ figure img{
 aside {
     position: fixed;
     float: right;
-    top:80px;
-    width: 220px;
+    top:calc(100vh - (100% - 100px));
+    width: 230px;
     right: 0;
     background-color: white;
     padding:10px;
-    overflow: scroll;
+    overflow-y: scroll;
     border-left: 1px solid grey;
     bottom: 0;
 }
 
 .item-orden {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     flex-wrap: wrap;
     align-items: center;
     border-bottom: 2px solid salmon;
+}
+.item-orden figure {
+    float:left;
+    width: 50%;
 }
 .item-orden figure img {
     max-width: 100px;
@@ -197,10 +201,12 @@ aside {
 }
 .item-orden .caf-title {
     font-size: 0.9rem;
+    margin:0 !important;
 }
 .item-orden .desc {
     font-size: .8rem;
-    text-align: center;
+    display:inline;
+    width: 50%;
 }
 .item-orden .precio {
     background-color: rgb(255, 147, 163);
@@ -215,20 +221,11 @@ aside {
 #ver-menu, #ver-carrito {
     cursor: pointer;
 }
-li#guia{
-    width: 300px;    
-    text-decoration: none;
-    list-style-type: none;
-    font-weight: 600;
-    font-size: 11px;
-    left: 100px;
-    z-index: 1;
-    margin-top: -260px;
-    width: fit-content;
-    height: 35px;
-    border-bottom: 4px solid #e7cbd4;
-    position: absolute;
-
+div#guia{
+    width: 100%;
+    position: relative;
+    margin: 0;
+    z-index: -999;
 }
 #item-count {
     font-size:10px;
@@ -246,9 +243,21 @@ li#guia{
     display: none;
 }
 .btn-add#vaciar-carrito {
-    position: absolute !important;
-    bottom: 5px !important;
+    width:90%;
+    margin:30px auto 0 auto;
+    position: relative !important;
 
+}
+.btn-add:disabled, .btn-add#vaciar-carrito:disabled{
+    background-color: #ffc7d9;
+    border: 2px solid #ffc7d9;
+    color: white;
+}
+.btn-add:disabled:hover, .btn-add#vaciar-carrito:disabled:hover{
+    background-color: #ffc7d9;
+    color: white;
+    border: 2px solid #ffc7d9;
+    cursor: default;
 }
 .no-border {
     border:none !important;
