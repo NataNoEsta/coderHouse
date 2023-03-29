@@ -1,10 +1,43 @@
 @import '/assets/css/style.css';
 
-h3 {
-    font-family: 'Italiana', serif;
-    line-height: 1;
-    text-align: center;
-    letter-spacing: 2px;
-    font-size: 1.2rem;
-    width: 100%;
+a:disabled, i, div#item-count {
+    cursor: default;
+    color: rgb(185, 139, 139);
+}
+.header {
+    margin-top:15%;
+}
+.header h1 {
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color: crimson;
+}
+article {
+    margin-top: 20px;
+}
+article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.quienes, .como, .info {
+    max-width: 600px;
+    display: block;
+    margin: 0 auto;
+}
+p, a {
+    display: inline;
+}
+p b {
+    color: crimson;
+    text-transform: uppercase;
+}
+p u {
+    text-decoration-color: crimson;
+    text-decoration-thickness:2px;
+    color: rgb(70, 70, 70);
+}
+p i {
+    text-decoration-style: wavy;
+    text-decoration-color: crimson;
 }
