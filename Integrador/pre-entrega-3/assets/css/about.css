@@ -1,0 +1,10 @@
+@import '/assets/css/style.css';
+
+h3 {
+    font-family: 'Italiana', serif;
+    line-height: 1;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+    width: 100%;
+}
