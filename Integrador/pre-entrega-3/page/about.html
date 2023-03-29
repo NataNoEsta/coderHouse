@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
@@ -20,7 +20,7 @@
         <section class="top-header">
             <nav class="navbar">
                 <ul>
-                    <li><a href="page/about.html">about</a></li>
+                    <li><a href="/page/about.html">about</a></li>
                     <li><a href="/" id="menu">Café pick Up!</a></li>
                     <li><a href="#" id="ver-carrito"><i class="fa fa-shopping-basket"></i>
                             <div id="item-count"></div>
@@ -28,25 +28,16 @@
 
                 </ul>
             </nav>
-</section>
+        </section>
         <h1>Bienvenido a "Café PickUp!"</h1>
-        <h3>Selecioná tu café favorito y lo pasás a buscar a nuestro local<br> recién hecho (siempre!) para que no
-            pierdas el tiempo esperando!</h3>
+        <h3>Quiénes Somos y qué ofrecemos</h3>
         <!-- <div id="time-calc"></div> -->
     </section>
 
-    <section class="main" id="ver-menu">
-        <article class="menu" id="app"></article>
+    <section class="main">
+        <article class="menu"></article>
     </section>
 
-    <aside class="hidden" id="sidebar">
-        <h1 class="tit">Esta es su orden:</h1>
-        <article class="menu" id="pedido"></article>
-        <button class="btn-add" id="confirmar" disabled>Confirmar</button>
-        <button class="btn-add" id="vaciar-carrito" disabled>Vaciar carrito</button>
-    </aside>
-
-    
     <script src="js/main.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

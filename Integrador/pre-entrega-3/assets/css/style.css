@@ -170,8 +170,7 @@ figure img{
     color: rgb(184, 77, 152);
     border-style: inset;
 }
-.aside {
-    /* visibility: hidden; */
+aside {
     position: fixed;
     float: right;
     top:calc(100vh - (100% - 100px));
@@ -183,9 +182,17 @@ figure img{
     border-left: 1px solid grey;
     bottom: 0;
 }
-.show {
-    visibility: visible;
+aside::-webkit-scrollbar {
+    width: 5px;
 }
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility:visible;
+}
+
 .item-orden {
     display: flex;
     flex-direction: row;
@@ -244,9 +251,10 @@ div#guia{
 }
 
 .btn-add#vaciar-carrito {
-    width:90%;
-    margin:30px auto 0 auto;
-    position: relative !important;
+    width:100%;
+    margin: 0 20px 0 auto;
+    position: relative;
+    display: block;
 
 }
 .btn-add:disabled, .btn-add#vaciar-carrito:disabled{

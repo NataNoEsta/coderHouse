@@ -1,5 +1,3 @@
-import { Cafe } from "../data/object.js";
-
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 // localStorage.setItem("carrito", JSON.stringify(carrito));
 
@@ -8,6 +6,16 @@ let contador = document.getElementById("item-count");
 
 let sidebar = document.getElementById("sidebar");
 let orden = document.getElementById("pedido");
+const carritoBtn = document.getElementById("ver-carrito");
+
+carritoBtn.addEventListener("click", (e) => {
+  sidebar.classList.toggle("visible")
+  console.log(e.target)
+
+})
+
+let vaciarCarrito = document.getElementById("vaciar-carrito");
+vaciarCarrito.addEventListener("click", resetCart);
 
 const showCont = () => {
   return cont > 0
@@ -16,9 +24,6 @@ const showCont = () => {
 };
 
 showCont();
-
-// hace visible el carrito
-const carritoBtn = document.getElementById("ver-carrito");
 
 function getTime(itemqty) {
   const dt = luxon.DateTime.now();
@@ -41,6 +46,13 @@ const toast = () => {
     },
   });
 };
+
+function emptyCart() {
+  if (carrito.length == 0) {
+    orden.innerHTML = `<p>No hay pedidos</p>`
+    vaciarCarrito.disabled = true;
+  }
+}
 
 
 async function fetchdata() {
@@ -97,58 +109,23 @@ function carttemplate(el) {
 function verCarrito() {
   orden.innerHTML = `${carrito.map(carttemplate).join('')}`
   showCont();
+  vaciarCarrito.disabled = false;
+
 }
 
-//   let erer = carrito.map((el) => el.name + el.descripcion + el.id)
-//   for (let el of carrito) {
-//     console.log(el)
-//     let div = document.createElement("div");
-
-//     div.innerHTML = `<article class="item-orden">
-//                     <h3 class="caf-title">${el.name}</h3>
-//                     <figure><img src=${el.img} alt="ilust"></figure>
-//                     <p class="desc">${el.descripcion}</p>
-//                     <p class="desc" id="el-qty">Cantidad: ${el.qty}</p>
-//                     <p class="precio">Precio: $${el.precio},00</p>
-//                     </article>`;
-//
-//     orden.insertAdjacentElement("beforeend", div);
-//   }
-//   // vacía el carrito
-// }
-
-let vaciarCarrito = document.getElementById("vaciar-carrito");
-vaciarCarrito.addEventListener("click", resetCart);
-
-function emptyCart() {
-  if (carrito.length == 0) {
-    pedido.innerText = "No hay pedidos";
-    vaciarCarrito.disabled = true;
-  }
-}
 function resetCart() {
   if (carrito.length > 0) {
     localStorage.clear();
-    orden.remove()
-    emptyCart();
+    orden.innerHTML = `<p>No hay pedidos</p>`
+
   }
+  vaciarCarrito.disabled = true;
   cont = 0;
   showCont();
 }
-// obtiene la hora actual cuando se hace un pedido y calcula 30 min a partir de esa hora
 
-// carrito.length > 0
-//   ? (guia.innerHTML = `<p>Su pedido estará a las: ${getTime()}</p>`)
-//   : "";
 
 // mostrar carrito / contenido de carrito vacío
 carrito.length > 0
-  ? verCarrito(carrito)
-  : `${(pedido.innerText = "No hay órdenes")}`;
-
-
-
-// carritoBtn.addEventListener('click', () => {
-//   verCarrito() || emptyCart();
-// }
-// );
+  ? verCarrito()
+  : emptyCart();
