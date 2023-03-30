@@ -197,10 +197,6 @@ aside::-webkit-scrollbar {
     background-color: pink;
 }
 
-aside .menu {
-    height: -webkit-fill-available;
-
-}
 .hidden {
 	visibility: hidden;
 }

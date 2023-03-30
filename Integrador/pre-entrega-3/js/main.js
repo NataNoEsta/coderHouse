@@ -94,10 +94,12 @@ async function fetchdata() {
 }
 fetchdata();
 
+// Suma el total de los precios
 function suma(p) {
   return carrito.reduce((acc, p) => acc + p.precio * p.qty, 0)
 }
-// VISUALIZACIÓN DEL CARRITO
+
+// CREACIÓN DEL CARRITO
 function carttemplate(el) {
   let preciosuma = el.qty * el.precio
   return `<article class="item-orden">
@@ -106,9 +108,11 @@ function carttemplate(el) {
                        <p class="desc">${el.descripcion}</p>
                        <p class="desc" id="el-qty">Cantidad: ${el.qty}</p>
                        <p class="precio">Precio: $${preciosuma},00</p>
+                       <button id="quitar-${el.id}" class="quitar">quitar</button>
                        </article>`
 }
 
+// RENDERIZA EL CARRITO
 function verCarrito() {
   orden.innerHTML = `${carrito.map(carttemplate).join('')}`
   let p = document.createElement('p')
@@ -116,9 +120,26 @@ function verCarrito() {
   orden.lastChild.append(p)
   showCont();
   vaciarCarrito.disabled = false;
-
+  let botonQuitar = document.querySelectorAll('.quitar')
+  for (let btn of botonQuitar) {
+    btn.addEventListener('click', removeItems)
+  }
 }
 
+function removeItems(e) {
+  let ff = Object.values(carrito)
+  let identificador = e.target.id.split("-")[1]
+  for (let i = 0; i < carrito.length; i++) {
+    if (identificador == carrito[i].id) {
+      e.target.parentElement.remove()
+      cont -= 1
+    }
+    showCont()
+  }
+  console.log(ff)
+}
+
+//ELIMINA EL CARRITO
 function resetCart() {
   if (carrito.length > 0) {
     localStorage.clear();
