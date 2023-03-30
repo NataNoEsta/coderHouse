@@ -25,6 +25,11 @@ article {
     display: block;
     margin: 0 auto;
 }
+a#info{
+    text-decoration: none;
+    color: crimson;
+    font-weight: 500;
+}
 p, a {
     display: inline;
 }
@@ -33,11 +38,14 @@ p b {
     text-transform: uppercase;
 }
 p u {
-    text-decoration-color: crimson;
+    text-decoration-color: rgb(252, 128, 153);
     text-decoration-thickness:2px;
     color: rgb(70, 70, 70);
 }
 p i {
-    text-decoration-style: wavy;
-    text-decoration-color: crimson;
+    text-decoration-style:wavy;
+    font-weight: 600;
+    text-transform: lowercase;
+    text-emphasis-color: blue;
+    color: rgb(228, 105, 105);
 }
