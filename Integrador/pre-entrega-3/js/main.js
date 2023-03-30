@@ -1,5 +1,6 @@
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 // localStorage.setItem("carrito", JSON.stringify(carrito));
+// let carrito = []
 
 let cont = JSON.parse(localStorage.getItem("cont")) || 0;
 let contador = document.getElementById("item-count");
@@ -86,11 +87,14 @@ async function fetchdata() {
       toast();
       verCarrito();
       // se guardan los items del carrito en el localStorage
+      // for (let i = 0; i < carrito.length; i++) {
+      //   localStorage.setItem("" + carrito[i].id, JSON.stringify(carrito[i]))
+      // }
       localStorage.setItem("carrito", JSON.stringify(carrito));
       localStorage.setItem("cont", cont);
-
     });
   }
+
 }
 fetchdata();
 
@@ -108,7 +112,7 @@ function carttemplate(el) {
                        <p class="desc">${el.descripcion}</p>
                        <p class="desc" id="el-qty">Cantidad: ${el.qty}</p>
                        <p class="precio">Precio: $${preciosuma},00</p>
-                       <button id="quitar-${el.id}" class="quitar">quitar</button>
+                       <button id="quitar-${el.id}" class="quitar btn-add">quitar</button>
                        </article>`
 }
 
@@ -127,16 +131,28 @@ function verCarrito() {
 }
 
 function removeItems(e) {
-  let ff = Object.values(carrito)
+
   let identificador = e.target.id.split("-")[1]
-  for (let i = 0; i < carrito.length; i++) {
-    if (identificador == carrito[i].id) {
-      e.target.parentElement.remove()
-      cont -= 1
+  if (carrito.length > 0) {
+    for (let el of carrito) {
+      if (el.id == identificador && el.qty == 1) {
+        e.target.parentElement.remove()
+        carrito.pop(el)
+      }
+      el.qty = el.qty - 1
+      // el.id == identificador ? e.target.parentElement.remove() : el.qty -= 1;
+      // carrito.pop(el)
     }
-    showCont()
+    cont > 0 && cont--
+
+    localStorage.removeItem("carrito")
+    localStorage.removeItem("cont")
+  } else {
+    emptyCart()
   }
-  console.log(ff)
+  localStorage.setItem("cont", cont)
+  localStorage.setItem("carrito", JSON.stringify(carrito))
+  showCont()
 }
 
 //ELIMINA EL CARRITO
