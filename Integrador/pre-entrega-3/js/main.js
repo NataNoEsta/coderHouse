@@ -5,19 +5,22 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 let cont = JSON.parse(localStorage.getItem("cont")) || 0;
 let contador = document.getElementById("item-count");
 
+let confirmar = document.getElementById("confirmar");
+confirmar.addEventListener('click', confirmOrder)
+
 let sidebar = document.getElementById("sidebar");
 let orden = document.getElementById("pedido");
 const carritoBtn = document.getElementById("ver-carrito");
 
+// toggle del carrito
 carritoBtn.addEventListener("click", (e) => {
   sidebar.classList.toggle("visible")
-  console.log(e.target)
-
 })
 
 let vaciarCarrito = document.getElementById("vaciar-carrito");
 vaciarCarrito.addEventListener("click", resetCart);
 
+// contador del carrito
 const showCont = () => {
   return cont > 0
     ? (contador.innerHTML = `${cont}`)
@@ -25,15 +28,7 @@ const showCont = () => {
 };
 
 showCont();
-
-function getTime(itemqty) {
-  const dt = luxon.DateTime.now();
-  const dtplus = dt.plus({ minutes: 15 });
-  dtplus *= itemqty;
-  console.log(dtplus)
-  return dtplus.toLocaleString(luxon.DateTime.TIME_SIMPLE);
-}
-
+let calcTime = document.getElementById('time-calc');
 
 const toast = () => {
   Swal.fire({
@@ -45,6 +40,7 @@ const toast = () => {
     customClass: {
       icon: "no-border",
     },
+    allowEscapeKey: true
   });
 };
 
@@ -54,7 +50,6 @@ function emptyCart() {
     vaciarCarrito.disabled = true;
   }
 }
-
 
 async function fetchdata() {
   let response = await fetch("./data/data.json");
@@ -120,10 +115,12 @@ function carttemplate(el) {
 function verCarrito() {
   orden.innerHTML = `${carrito.map(carttemplate).join('')}`
   let p = document.createElement('p')
-  p = `Total = ${suma(carrito)}`
+  p.className = "precio-total";
+  p.textContent = `Total = $${suma(carrito)},00`
   orden.lastChild.append(p)
   showCont();
   vaciarCarrito.disabled = false;
+  confirmar.disabled = false;
   let botonQuitar = document.querySelectorAll('.quitar')
   for (let btn of botonQuitar) {
     btn.addEventListener('click', removeItems)
@@ -135,7 +132,7 @@ function removeItems(e) {
   let identificador = e.target.id.split("-")[1]
   if (carrito.length > 0) {
     for (let el of carrito) {
-      if (el.id == identificador && el.qty == 1) {
+      if (el.id == identificador && el.qty > 1) {
         e.target.parentElement.remove()
         carrito.pop(el)
       }
@@ -155,6 +152,45 @@ function removeItems(e) {
   showCont()
 }
 
+function getTime(n) {
+  let m = 30 + (15 * n)
+  console.log(m)
+  const dt = luxon.DateTime.now();
+  let dtplus = dt.plus({ minutes: m });
+  console.log(dtplus)
+  return dtplus.toLocaleString(luxon.DateTime.TIME_SIMPLE);
+}
+
+const toastReady = () => {
+  Swal.fire({
+    title: "Gracias",
+    iconHtml: '<img src="assets/images/coffee.png" width="100px">',
+    html: `<p>Su pedido estará listo a las: <b>${getTime(cont)}</b></p>`,
+    confirmationButtonText: 'Aceptar',
+    backdrop: true,
+    customClass: {
+      icon: "no-border",
+    },
+    allowEscapeKey: true,
+
+  });
+}
+// CONFIRMAR COMPRA
+function confirmOrder() {
+  // let tempocalculado = getTime(cont)
+  orden.innerHTML = `
+                  <img src="/assets/images/cafe-listo.png" class="cart-confirm">
+                  <p>¡Gracias!</p>
+                  `
+  localStorage.clear()
+  vaciarCarrito.remove();
+  confirmar.disabled = true;
+  // calcTime.innerHTML = `<p>Su pedido estará: ${tempocalculado}</p>`
+  cont = 0;
+  showCont()
+  toastReady()
+}
+
 //ELIMINA EL CARRITO
 function resetCart() {
   if (carrito.length > 0) {
@@ -163,6 +199,7 @@ function resetCart() {
 
   }
   vaciarCarrito.disabled = true;
+  confirmar.disabled = true;
   cont = 0;
   showCont();
 }
