@@ -1,7 +1,7 @@
+// crea el carrito y lo almacena en el localStorage para su uso posterior
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-// localStorage.setItem("carrito", JSON.stringify(carrito));
-// let carrito = []
 
+//contador de items del carrito
 let cont = JSON.parse(localStorage.getItem("cont")) || 0;
 let contador = document.getElementById("item-count");
 
@@ -30,6 +30,7 @@ const showCont = () => {
 showCont();
 let calcTime = document.getElementById('time-calc');
 
+// confirmacion de pedido
 const toast = () => {
   Swal.fire({
     title: "Gracias",
@@ -43,14 +44,15 @@ const toast = () => {
     allowEscapeKey: true
   });
 };
-
+// visualiza el carrito cuando no hay items
 function emptyCart() {
   if (carrito.length == 0) {
     orden.innerHTML = `<p>No hay pedidos</p>`
     vaciarCarrito.disabled = true;
+    confirmar.disabled = true;
   }
 }
-
+// toma los datos desde data.json a través de async -> await fetch -> response
 async function fetchdata() {
   let response = await fetch("./data/data.json");
   let data = await response.json();
@@ -70,21 +72,21 @@ async function fetchdata() {
 
     let btnAdd = document.getElementById(`${caf.id}`);
     btnAdd.addEventListener("click", () => {
-
+      // agrega el item al carrito sólo si no está ya en él
       let match = carrito.some((el) => caf.id == el.id);
       if (!match) {
         carrito.push(caf)
       } else {
+        // si el item ya está actualiza la cantidad
         caf.qty++;
       }
+
       cont++;
 
       toast();
       verCarrito();
       // se guardan los items del carrito en el localStorage
-      // for (let i = 0; i < carrito.length; i++) {
-      //   localStorage.setItem("" + carrito[i].id, JSON.stringify(carrito[i]))
-      // }
+
       localStorage.setItem("carrito", JSON.stringify(carrito));
       localStorage.setItem("cont", cont);
     });
@@ -127,27 +129,29 @@ function verCarrito() {
   }
 }
 
+// remueve cada item
 function removeItems(e) {
-
   let identificador = e.target.id.split("-")[1]
-  if (carrito.length > 0) {
+  if (cont > 0 & carrito.length > 0) {
     for (let el of carrito) {
-      if (el.id == identificador && el.qty > 1) {
+      if (el.id == identificador) {
         e.target.parentElement.remove()
-        carrito.pop(el)
-      }
-      el.qty = el.qty - 1
+        carrito.shift(el)
+      } 
     }
     cont > 0 && cont--
 
     localStorage.removeItem("carrito")
-    localStorage.removeItem("cont")
+
   } else {
-    emptyCart()
+    carrito.length == 0 && (cont = 0)
+    localStorage.removeItem("cont")
+    showCont()
   }
   localStorage.setItem("cont", cont)
   localStorage.setItem("carrito", JSON.stringify(carrito))
   showCont()
+  emptyCart()
 }
 // CALCULA UN TIUEMPO DE BASE DE 30min Y 15+ POR CADA ITEM
 function getTime(n) {
@@ -170,7 +174,6 @@ const toastReady = () => {
       icon: "no-border",
     },
     allowEscapeKey: true,
-
   });
 }
 // CONFIRMAR COMPRA
@@ -178,12 +181,11 @@ function confirmOrder() {
   // let tempocalculado = getTime(cont)
   orden.innerHTML = `
                   <img src="/assets/images/cafe-listo.png" class="cart-confirm">
-                  <p>¡Gracias!</p>
                   `
   localStorage.clear()
   vaciarCarrito.remove();
+  document.getElementById('cart-title').textContent = "Gracias!"
   confirmar.disabled = true;
-  // calcTime.innerHTML = `<p>Su pedido estará: ${tempocalculado}</p>`
   cont = 0;
   showCont()
   toastReady()
@@ -194,7 +196,6 @@ function resetCart() {
   if (carrito.length > 0) {
     localStorage.clear();
     orden.innerHTML = `<p>No hay pedidos</p>`
-
   }
   vaciarCarrito.disabled = true;
   confirmar.disabled = true;

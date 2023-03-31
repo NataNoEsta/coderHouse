@@ -8,7 +8,7 @@
 	font-size: 14px;
 }
 body {
-	background: #ffc7d9; /* fallback for old browsers */
+	background: #ffc3d5; /* fallback for old browsers */
 	/* background: -webkit-linear-gradient(-20deg, #eeabc1 , #c3c3e0, #3b8d99) 10%;
     background: linear-gradient(-20deg, #eeabc1, #c3c3e0, #3b8d99) 10%;  */
 	background-attachment: fixed;
@@ -36,9 +36,10 @@ h1 {
 }
 
 .header {
-	position: relative;
-	display: block;
-	margin-top: 10%;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	margin: 8rem 0 1rem;
 }
 
 .main {
@@ -54,11 +55,11 @@ h1 {
 	display: flex;
 	min-height: 110px;
 	align-items: center;
-	background-color: rgb(254, 255, 209);
-	box-shadow: 0px 2px 6px rgb(0, 0, 0, 30%);
+	background-color: #ffc3d5;
+	border-bottom: 1px solid rgb(44, 44, 44);
 }
 .navbar ul {
-	width: 100%;
+	width: 90%;
 	text-decoration: none;
 	list-style-type: none;
 	display: inline-flex;
@@ -69,7 +70,8 @@ h1 {
 .navbar li a {
 	font-family: "Sansita", sans-serif;
 	text-decoration: none;
-	font-size: 2.2rem;
+	font-size: 2.1rem;
+	line-height: 1;
 	font-weight: 700;
 	color: rgb(31, 30, 30);
 }
@@ -98,10 +100,9 @@ h1 {
 	justify-content: center;
 	border-left: 1px solid crimson;
 	border-top: 1px solid crimson;
-	background-color: #ffda89;
+	background-color: #ffcd60;
 	/* box-shadow: inset 4px 12px 30px rgba(201, 192, 192, 0.8), 5px 6px 0 2px rgba(255, 41, 219, 0.5); */
 	box-shadow: 6px 6px 0 2px rgba(255, 44, 62, 0.8);
-
 	padding: 0 10px;
 	border-radius: 10px;
 	display: flex;
@@ -162,7 +163,7 @@ figure img {
 	margin-bottom: 4%;
 	appearance: none;
 	position: relative;
-	border: 2px solid rgb(151, 117, 245);
+	border: 2px solid rgb(142, 103, 250);
 	border-radius: 10px;
 	padding: 2px 15px 2px 15px;
 	background-color: rgb(255, 255, 255);
