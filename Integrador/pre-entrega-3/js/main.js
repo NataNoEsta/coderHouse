@@ -137,8 +137,6 @@ function removeItems(e) {
         carrito.pop(el)
       }
       el.qty = el.qty - 1
-      // el.id == identificador ? e.target.parentElement.remove() : el.qty -= 1;
-      // carrito.pop(el)
     }
     cont > 0 && cont--
 
@@ -151,7 +149,7 @@ function removeItems(e) {
   localStorage.setItem("carrito", JSON.stringify(carrito))
   showCont()
 }
-
+// CALCULA UN TIUEMPO DE BASE DE 30min Y 15+ POR CADA ITEM
 function getTime(n) {
   let m = 30 + (15 * n)
   console.log(m)
