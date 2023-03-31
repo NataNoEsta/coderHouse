@@ -14,14 +14,13 @@ body {
 	background-attachment: fixed;
 }
 ::-webkit-scrollbar {
-    width: 6px;
-    background-color: aliceblue;
-    border-left: 1px solid rgb(151, 117, 245);
-
+	width: 6px;
+	background-color: aliceblue;
+	border-left: 1px solid rgb(151, 117, 245);
 }
 ::-webkit-scrollbar-thumb {
-    background-color:rgb(211, 137, 226);    
-    border-left: 1px solid crimson
+	background-color: rgb(211, 137, 226);
+	border-left: 1px solid crimson;
 }
 h1 {
 	text-align: center;
@@ -193,8 +192,8 @@ aside {
 }
 aside::-webkit-scrollbar {
 	width: 2px;
-    border:none !important;
-    background-color: pink;
+	border: none !important;
+	background-color: pink;
 }
 
 .hidden {
@@ -275,7 +274,7 @@ div#guia {
 	background-color: rgb(185, 161, 250);
 	border: 2px solid rgb(182, 147, 192);
 	color: #d4d4d4;
-    margin: 2px auto 0 auto;
+	margin: 2px auto 0 auto;
 }
 
 .no-border {
@@ -303,9 +302,27 @@ li a:hover {
 .title-bye {
 	border-top: 6px solid crimson;
 }
-.side-buttons{
-    display: flex;
-    flex-direction: column;
-
-justify-content: flex-end;
+.side-buttons {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	margin-top: 10px;
+	padding: 10px;
+}
+.cart-confirm {
+	width: 200px;
+	display: block;
+	position: relative;
+	margin: 30% auto;
+}
+.precio-total {
+	width: 100%;
+	font-weight: 600;
+	background-color: rgb(151, 117, 245);
+	color: whitesmoke;
+	padding: 5px 5px;
+	text-align: end;
+	margin-top: 20px;
+	margin-bottom: -10px;
+	z-index: 1;
 }
