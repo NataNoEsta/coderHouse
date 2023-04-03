@@ -1,48 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>TFI pre-entrega Nro3</title>
 </head>
+
 <body>
-    <section class="first-header" id="guia" style="display:none"><p id="reloj"></p></section>
+
     <section class="header">
+        <div id="guia"></div>
         <section class="top-header">
             <nav class="navbar">
                 <ul>
                     <li><a href="page/about.html">about</a></li>
-                    <li><a href="/" id="menu">Café pick Up!</a></li>
-                    <li><a id="ver-carrito"><i class="fa fa-shopping-basket"></i>
+                    <li><a href="/" id="menu">Coffee PickUp!</a></li>
+                    <li><a href="#" id="ver-carrito"><i class="fa fa-shopping-basket" disabled></i>
                             <div id="item-count"></div>
                         </a></li>
 
                 </ul>
             </nav>
-            
-        </section>            
-        <h1>Bienvenido a "Café PickUp!"</h1>
-        <h3>Selecioná tu café favorito y lo pasás a buscar a nuestro local<br> recién hecho (siempre!) para que no pierdas el tiempo esperando!</h3>
-   
+        </section>
+        <h1>Bienvenido a "Coffee Pickup!"</h1>
+        <h3>Selecioná tu café favorito y lo pasás a buscar a nuestro local<br> recién hecho (siempre!) para que no
+            pierdas el tiempo esperando!</h3>
+        <div id="time-calc"></div>
     </section>
 
     <section class="main" id="ver-menu">
         <article class="menu" id="app"></article>
     </section>
 
-    <aside class="aside" id="sidebar">
-        <h1 class="tit">Esta es su orden:</h1>
+    <aside class="hidden" id="sidebar">
+        <h1 class="tit" id="cart-title">Esta es su orden:</h1>
         <article class="menu" id="pedido"></article>
-        <button class="btn-add" id="vaciar-carrito" disabled>Vaciar carrito</button>
+        <section class="side-buttons">
+            <button class="btn-add" id="confirmar" disabled>Confirmar</button>
+            <button class="btn-add" id="vaciar-carrito" disabled>Vaciar carrito</button>
+        </section>
     </aside>
-    
-    <script src="assets/js/script.js" type="module"></script>
-    <script src="/assets/js/jquery-2.0.0.min.js" type="text/script"></script>
+
+
+    <script src="js/main.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+    <section class="footer">
+        <footer class="footer-title">
+            <h1 class="title-bye">¡Gracias por tu visita!</h1>
+        </footer>
+    </section>
 </body>
+
 </html>
