@@ -4,7 +4,7 @@
 		"name": "Espresso",
 		"precio": 250,
 		"descripcion": "Café negro",
-		"img": "assets/images/espresso.png",
+		"img": "../assets/images/espresso.png",
 		"qty": 0
 	},
 	{
@@ -12,7 +12,7 @@
 		"name": "Espresso Doble",
 		"precio": 285,
 		"descripcion": "Café negro, doble",
-		"img": "assets/images/espresso.png",
+		"img": "../assets/images/espresso.png",
 		"qty": 0
 	},
 	{
@@ -20,7 +20,7 @@
 		"name": "Mediano",
 		"precio": 290,
 		"descripcion": "Café negro, 120ml",
-		"img": "assets/images/mediano.png",
+		"img": "../assets/images/mediano.png",
 		"qty": 0
 	},
 	{
@@ -28,7 +28,7 @@
 		"name": "Machiatto",
 		"precio": 350,
 		"descripcion": "Café espresso con leche",
-		"img": "assets/images/caffe_mochaccino.png",
+		"img": "../assets/images/caffe_mochaccino.png",
 		"qty": 0
 	},
 	{
@@ -36,7 +36,7 @@
 		"name": "Capuchino",
 		"precio": 400,
 		"descripcion": "Café con leche espumosa y canela",
-		"img": "assets/images/cappuccino.png",
+		"img": "../assets/images/cappuccino.png",
 		"qty": 0
 	},
 	{
@@ -44,7 +44,7 @@
 		"name": "Cafe Latte",
 		"precio": 470,
 		"descripcion": "Café mediano con leche",
-		"img": "assets/images/caffe_latte.png",
+		"img": "../assets/images/caffe_latte.png",
 		"qty": 0
 	},
 	{
@@ -52,7 +52,7 @@
 		"name": "Iced Latte",
 		"precio": 470,
 		"descripcion": "Café mediano con leche y hielo",
-		"img": "assets/images/caffe_latte.png",
+		"img": "../assets/images/caffe_latte.png",
 		"qty": 0
 	},
 	{
@@ -60,7 +60,7 @@
 		"name": "Americano",
 		"precio": 270,
 		"descripcion": "Café mediano suave",
-		"img": "assets/images/iced_coffee.png",
+		"img": "../assets/images/iced_coffee.png",
 		"qty": 0
 	},
 	{
@@ -68,7 +68,7 @@
 		"name": "Mocachino",
 		"precio": 420,
 		"descripcion": "Capuchino con salsa de chocolate",
-		"img": "assets/images/caffe_mochaccino.png",
+		"img": "../assets/images/caffe_mochaccino.png",
 		"qty": 0
 	}
 ]

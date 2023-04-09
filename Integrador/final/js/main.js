@@ -35,7 +35,7 @@ const toast = () => {
   Swal.fire({
     title: "Gracias",
     text: "Revise el carrito para confirmar el pedido",
-    iconHtml: '<img src="assets/images/coffee.png" width="100px">',
+    iconHtml: '<img src="../assets/images/coffee.png" width="100px">',
     confirmationButtonText: "Ok!",
     backdrop: true,
     customClass: {
@@ -54,7 +54,7 @@ function emptyCart() {
 }
 // toma los datos desde data.json a través de async -> await fetch -> response
 async function fetchdata() {
-  let response = await fetch("./data/data.json");
+  let response = await fetch("../data/data.json");
   let data = await response.json();
   let app = document.getElementById("app");
 
@@ -169,7 +169,7 @@ function getTime(n) {
 const toastReady = () => {
   Swal.fire({
     title: "Gracias",
-    iconHtml: '<img src="assets/images/coffee.png" width="100px">',
+    iconHtml: '<img src="../assets/images/coffee.png" width="100px">',
     html: `<p>Su pedido estará listo a las: <b>${getTime(cont)}</b></p>`,
     confirmationButtonText: 'Aceptar',
     backdrop: true,
