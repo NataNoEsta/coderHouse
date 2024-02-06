@@ -54,7 +54,7 @@ function emptyCart() {
 }
 // toma los datos desde data.json a través de async -> await fetch -> response
 async function fetchdata() {
-  let response = await fetch("../data/data.json");
+  let response = await fetch("../../src/data/data.json");
   let data = await response.json();
   let app = document.getElementById("app");
 
