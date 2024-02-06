@@ -169,7 +169,7 @@ function getTime(n) {
 const toastReady = () => {
   Swal.fire({
     title: "Gracias",
-    iconHtml: '<img src="../assets/images/coffee.png" width="100px">',
+    iconHtml: '<img src="..public/assets/images/coffee.png" width="100px">',
     html: `<p>Su pedido estará listo a las: <b>${getTime(cont)}</b></p>`,
     confirmationButtonText: 'Aceptar',
     backdrop: true,
